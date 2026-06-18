@@ -1,0 +1,217 @@
+:root {
+    /* Apple iOS Color Palette */
+    --ios-bg: #F5F5F7;
+    --ios-card-bg: rgba(255, 255, 255, 0.7);
+    --ios-card-border: rgba(255, 255, 255, 0.5);
+    --ios-blue: #007AFF;
+    --ios-red: #FF3B30;       /* Healthcare */
+    --ios-orange: #FF9500;    /* Leadership */
+    --ios-green: #34C759;     /* Microchip / Additional */
+    --ios-teal: #5AC8FA;      /* Tools */
+    --ios-indigo: #5856D6;    /* Architecture */
+    --ios-text: #1D1D1F;
+    --ios-text-secondary: #86868B;
+
+    /* Native System Font Stack */
+    --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: var(--ios-bg);
+    color: var(--ios-text);
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Language Switcher Core */
+body.lang-en .fr { display: none !important; }
+body.lang-fr .en { display: none !important; }
+
+a { text-decoration: none !important; }
+
+/* Typography Tweaks */
+.tracking-tight { letter-spacing: -0.04em; }
+.ios-text { color: var(--ios-text) !important; }
+.ios-text-secondary { color: var(--ios-text-secondary) !important; }
+.ios-blue { color: var(--ios-blue) !important; }
+.ios-red { color: var(--ios-red) !important; }
+.ios-orange { color: var(--ios-orange) !important; }
+.ios-green { color: var(--ios-green) !important; }
+.ios-teal { color: var(--ios-teal) !important; }
+.ios-indigo { color: var(--ios-indigo) !important; }
+
+/* Liquid Glass (Glassmorphism) Engine */
+.ios-glass {
+    background: var(--ios-card-bg);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid var(--ios-card-border);
+}
+
+/* Floating Navbar Overrides */
+.nav-container { padding-top: 15px; }
+.navbar .nav-link {
+    color: var(--ios-text-secondary);
+    transition: color 0.2s, background-color 0.2s;
+}
+.navbar .nav-link:hover, .navbar .nav-link:active {
+    color: var(--ios-text);
+    background-color: rgba(0,0,0,0.05);
+}
+
+/* Custom Navbar Radius (Fix for Mobile Menu Overflow) */
+.custom-nav {
+    border-radius: 30px;
+    transition: border-radius 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .custom-nav {
+        border-radius: 24px; /* Switches to a rounded rectangle on mobile to hold the expanded menu cleanly */
+    }
+    .navbar-collapse {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+}
+
+/* Ambient Background Orbs for Liquid Feel */
+.ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.6;
+    animation: drift 15s infinite alternate ease-in-out;
+}
+.orb-1 {
+    width: 400px; height: 400px;
+    background: #e0eaff;
+    top: -100px; left: -100px;
+}
+.orb-2 {
+    width: 350px; height: 350px;
+    background: #fdf2f8;
+    top: 40%; right: -50px;
+}
+@keyframes drift {
+    100% { transform: translate(30px, 50px) scale(1.1); }
+}
+
+/* Profile Image (Squircle simulation) */
+.profile-squircle {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 25%;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.profile-squircle:hover {
+    transform: scale(1.05);
+}
+
+/* iOS Cards */
+.ios-card {
+    border-radius: 32px;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    overflow: hidden;
+}
+.ios-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06) !important;
+}
+
+/* Custom Watermark Icon (Fix for Education cards) */
+.watermark-icon {
+    position: absolute;
+    right: -20px;
+    bottom: -30px;
+    font-size: 10rem;
+    color: var(--ios-text);
+    opacity: 0.03; /* Pure, subtle iOS style */
+    transform: rotate(-15deg);
+    z-index: 0;
+    pointer-events: none; /* Ensures the icon doesn't block text selection */
+}
+
+/* iOS Buttons */
+.btn-ios-primary {
+    background-color: var(--ios-blue);
+    color: white;
+    border: none;
+    transition: all 0.2s;
+}
+.btn-ios-primary:hover {
+    background-color: #0062CC;
+    transform: scale(1.05);
+}
+.btn-ios-secondary {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--ios-text);
+    border: none;
+    transition: all 0.2s;
+}
+.btn-ios-secondary:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+/* Authentic Swift Icon Color */
+.fa-swift {
+    background: linear-gradient(135deg, #FD9426 0%, #F05138 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Status Indicator */
+.status-dot {
+    width: 10px; height: 10px;
+    background-color: #34C759;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(52, 199, 89, 0.5);
+}
+
+/* Lists & Tags */
+.ios-list {
+    list-style: none; padding-left: 0; color: var(--ios-text-secondary);
+}
+.ios-list li {
+    position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; line-height: 1.6;
+}
+.ios-list li::before {
+    content: "•"; position: absolute; left: 0; color: var(--ios-blue); font-weight: bold;
+}
+.ios-list strong { color: var(--ios-text); font-weight: 600; }
+
+.ios-tag {
+    background-color: rgba(0, 122, 255, 0.1);
+    color: var(--ios-blue);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Skill Pills */
+.ios-pill {
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(0,0,0,0.05);
+    color: var(--ios-text);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* Scroll Offset */
+section { scroll-margin-top: 120px; }
+
+.text-icon {
+    height: 1em;
+    width: auto;
+    vertical-align: -0.1em;
+}

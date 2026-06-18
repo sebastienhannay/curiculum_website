@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sébastien Hannay - Senior iOS Engineer</title>
+    <link rel="icon" type="image/svg+xml" href="resources/coreon_logo_light.svg">
+    <link rel="apple-touch-icon" href="resources/coreon_logo.png">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom iOS CSS -->
+    <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body class="lang-en" data-bs-spy="scroll" data-bs-target="#main-nav" data-bs-smooth-scroll="true">
+
+    <!-- Floating iOS Dock Navigation -->
+    <div class="nav-container fixed-top mt-4 d-flex justify-content-center z-3">
+        <!-- Replaced 'rounded-pill' with 'custom-nav' -->
+        <nav id="main-nav" class="navbar navbar-expand-md navbar-light ios-glass custom-nav px-4 py-2 shadow-sm">
+            <a class="navbar-brand fw-bold ios-text fs-5 me-4" href="#"><img class="text-icon" src="resources/coreon_logo_light.svg" alt="logo"/> SH</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto fw-medium gap-1">
+                    <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#profile"><span class="en">Profile</span><span class="fr">Profil</span></a></li>
+                    <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#experience"><span class="en">Experience</span><span class="fr">Expérience</span></a></li>
+                    <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#expertise"><span class="en">Expertise</span><span class="fr">Expertise</span></a></li>
+                    <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#education"><span class="en">Education</span><span class="fr">Formation</span></a></li>
+                </ul>
+                <button class="btn btn-ios-primary rounded-pill btn-sm ms-md-3 px-3 py-2 fw-medium shadow-sm lang-switch" onclick="toggleLanguage()">
+                    <i class="fa-solid fa-globe me-1"></i>
+                    <span class="en">EN</span>
+                    <span class="fr">FR</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-section min-vh-100 d-flex align-items-center position-relative overflow-hidden">
+        <!-- Ambient Background Orbs -->
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+
+        <div class="container pt-5 mt-5">
+            <div class="row align-items-center flex-column-reverse flex-lg-row">
+                <div class="col-lg-7 text-center text-lg-start mt-5 mt-lg-0 z-1" data-aos="fade-up">
+                    <h1 class="display-2 fw-bold ios-text mb-2 tracking-tight">Sébastien Hannay</h1>
+                    <h2 class="h3 ios-text-secondary fw-semibold mb-4">
+                        <span class="en">Senior iOS Engineer & Tech Lead</span>
+                        <span class="fr">Ingénieur iOS Senior & Tech Lead</span>
+                    </h2>
+
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mt-4">
+                        <a href="mailto:seb.hannay@gmail.com" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-solid fa-envelope me-2"></i>Email</a>
+                        <a href="tel:+32496315441" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-solid fa-phone me-2"></i>+32 496 31 54 41</a>
+                        <a href="https://linkedin.com/in/sebastienhannay" target="_blank" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-brands fa-linkedin me-2"></i>LinkedIn</a>
+                        <a href="https://github.com/sebastienhannay" target="_blank" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-brands fa-github me-2"></i>Github</a>
+                        <span class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium pointer-events-none"><i class="fa-solid fa-location-dot me-2"></i>Crisnée, BE</span>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center z-1" data-aos="zoom-in">
+                    <img src="resources/profile.jpg" alt="Sébastien Hannay" class="img-fluid profile-squircle shadow-lg border border-white border-opacity-50">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section id="profile" class="py-5 section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up">
+                    <div class="ios-card ios-glass shadow-sm">
+                        <div class="card-body p-4 p-md-5 text-center">
+                            <img src="resources/coreon_logo_light.svg" width="24px" height="24px" alt="logo"/>
+                            <p class="en lead fw-medium ios-text mb-0 lh-base">Senior iOS Engineer with 10+ years of experience building production mobile applications, primarily in the healthcare domain. Specialist in evolving mobile architectures and delivering secure, patient-centric features for clinical environments. Proven Tech Lead capable of guiding technical strategy across mobile and backend components while maintaining high engineering standards.</p>
+                            <p class="fr lead fw-medium ios-text mb-0 lh-base">Ingénieur iOS Senior avec plus de 10 ans d'expérience dans le développement d'applications mobiles de production, principalement dans le secteur de la santé (HealthTech). Spécialiste de l'évolution des architectures mobiles et de la mise en œuvre de fonctionnalités sécurisées et centrées sur le patient. Tech Lead confirmé, capable de piloter la stratégie technique sur les composants mobiles et backend tout en maintenant des standards d'ingénierie élevés.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 section-padding">
+        <div class="container">
+            <h3 class="fw-bold fs-2 ios-text mb-5 text-center" data-aos="fade-up"><span class="en">Experience</span><span class="fr">Expérience</span></h3>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Role 1: Tech Lead -->
+                <div class="col-12 col-lg-10" data-aos="fade-up">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5">
+                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row mb-4">
+                            <div>
+                                <h4 class="fw-bold ios-text mb-1">Tech Lead</h4>
+                                <h5 class="ios-blue fw-semibold"><a href="https://www.andaman7.com">Andaman7</a></h5>
+                            </div>
+                            <span class="ios-tag mt-2 mt-md-0">2019 – 2026</span>
+                        </div>
+                        <ul class="ios-list">
+                            <li class="en"><strong>Technical Strategy:</strong> Defined and executed the technical roadmap across mobile and backend components, ensuring high scalability and reliability.</li>
+                            <li class="en"><strong>Project Leadership:</strong> Coordinated development efforts and prioritized technical tasks to deliver high-quality features in real-world healthcare environments.</li>
+                            <li class="en"><strong>Engineering Standards:</strong> Led technical discussions and code reviews to maintain high engineering standards and long-term maintainability.</li>
+                            <li class="en"><strong>Process Improvement:</strong> Enhanced internal development practices, tooling, and release processes for the engineering team.</li>
+
+                            <li class="fr"><strong>Stratégie technique :</strong> Définition et exécution de la roadmap technique sur les composants mobiles et backend, garantissant scalabilité et fiabilité.</li>
+                            <li class="fr"><strong>Leadership de projet :</strong> Coordination des efforts de développement et priorisation des tâches techniques pour livrer des fonctionnalités de haute qualité.</li>
+                            <li class="fr"><strong>Standards d'ingénierie :</strong> Animation des discussions techniques et revues de code pour assurer la maintenabilité à long terme et l'excellence technique.</li>
+                            <li class="fr"><strong>Amélioration des processus :</strong> Optimisation des pratiques de développement internes, de l'outillage et des processus de mise en production (release).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 2: Senior iOS -->
+                <div class="col-12 col-lg-10" data-aos="fade-up">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5">
+                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row mb-4">
+                            <div>
+                                <h4 class="fw-bold ios-text mb-1">
+                                    <span class="en">Senior iOS Engineer</span><span class="fr">Ingénieur iOS Senior</span>
+                                </h4>
+                                <h5 class="ios-blue fw-semibold"><a href="https://www.andaman7.com">Andaman7</a></h5>
+                            </div>
+                            <span class="ios-tag mt-2 mt-md-0">2014 – 2026</span>
+                        </div>
+                        <ul class="ios-list">
+                            <li class="en"><strong>Architecture:</strong> Designed and maintained the flagship iOS application using Swift, UIKit, and modern patterns (MVVM, modular architecture).</li>
+                            <li class="en"><strong>Interoperability:</strong> Integrated healthcare standards such as FHIR and managed secure medical data exchange for global clinical trials.</li>
+                            <li class="en"><strong>Core Systems:</strong> Implemented robust networking layers and secure synchronization engines for medical data with backend services.</li>
+                            <li class="en"><strong>Optimization:</strong> Focused on performance tuning, debugging production apps, and maintaining a robust, secure Objective-C/Swift codebase.</li>
+
+                            <li class="fr"><strong>Architecture :</strong> Conception et maintenance de l'application iOS phare en utilisant Swift, UIKit et des patterns modernes (MVVM, architecture modulaire).</li>
+                            <li class="fr"><strong>Interopérabilité :</strong> Intégration des standards de santé tels que FHIR et gestion de l'échange sécurisé de données médicales.</li>
+                            <li class="fr"><strong>Systèmes cœurs :</strong> Implémentation de couches réseau robustes et de moteurs de synchronisation sécurisés pour les données médicales.</li>
+                            <li class="fr"><strong>Optimisation :</strong> Focus sur l'optimisation des performances, le débogage d'applications en production et la maintenance d'une base de code Objective-C/Swift sécurisée.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 3: Manex -->
+                <div class="col-12 col-lg-10" data-aos="fade-up">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5">
+                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row mb-4">
+                            <div>
+                                <h4 class="fw-bold ios-text mb-1">
+                                    <span class="en">iOS Engineer</span><span class="fr">Ingénieur iOS</span>
+                                </h4>
+                                <h5 class="ios-blue fw-semibold">Manex</h5>
+                            </div>
+                            <span class="ios-tag mt-2 mt-md-0">2014 – 2014</span>
+                        </div>
+                        <ul class="ios-list mb-0">
+                            <li class="en">Developed early iOS prototypes for the Andaman7 medical platform.</li>
+                            <li class="en">Implemented core iPad functionality for managing occupational health records.</li>
+
+                            <li class="fr">Développement des premiers prototypes iOS pour la plateforme médicale Andaman7.</li>
+                            <li class="fr">Implémentation des fonctionnalités clés sur iPad pour la gestion des dossiers de santé au travail.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="py-5 section-padding">
+        <div class="container">
+            <h3 class="fw-bold fs-2 ios-text mb-5 text-center" data-aos="fade-up"><span class="en">Expertise</span><span class="fr">Expertise</span></h3>
+
+            <div class="row g-4">
+                <!-- Stack (Swift Custom Gradient) -->
+                <div class="col-md-6" data-aos="zoom-in">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
+                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-brands fa-swift me-2 fs-3"></i> iOS Stack</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="ios-pill">Swift</span><span class="ios-pill">SwiftUI</span><span class="ios-pill">UIKit</span>
+                            <span class="ios-pill">Objective-C</span><span class="ios-pill">Core Data</span><span class="ios-pill">Core Animation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architecture (iOS Indigo) -->
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
+                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-solid fa-cubes ios-indigo me-2 fs-3"></i> Architecture</h5>
+                        <div class="d-flex flex-wrap gap-2 en">
+                            <span class="ios-pill">MVVM</span><span class="ios-pill">Modular Codebases</span>
+                            <span class="ios-pill">Networking</span><span class="ios-pill">Data Sync</span><span class="ios-pill">Security</span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2 fr">
+                            <span class="ios-pill">MVVM</span><span class="ios-pill">Architecture Modulaire</span>
+                            <span class="ios-pill">Réseau</span><span class="ios-pill">Sync. de données</span><span class="ios-pill">Sécurité</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Healthcare (iOS Red) -->
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
+                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-solid fa-heart-pulse ios-red me-2 fs-3"></i> <span class="en">Healthcare</span><span class="fr">HealthTech</span></h5>
+                        <div class="d-flex flex-wrap gap-2 en">
+                            <span class="ios-pill">FHIR Standard</span><span class="ios-pill">Secure Data Exchange</span><span class="ios-pill">Data Privacy</span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2 fr">
+                            <span class="ios-pill">Standard FHIR</span><span class="ios-pill">Échange Sécurisé</span><span class="ios-pill">Confidentialité</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools (iOS Teal) -->
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
+                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-solid fa-wrench ios-teal me-2 fs-3"></i> <span class="en">Tools</span><span class="fr">Outils</span></h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="ios-pill">Xcode</span><span class="ios-pill">REST APIs</span><span class="ios-pill">Git</span>
+                            <span class="ios-pill">CI/CD</span><span class="ios-pill">Performance Debugging</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership (iOS Orange) -->
+                <div class="col-lg-4 col-md-12" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
+                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-solid fa-users ios-orange me-2 fs-3"></i> Leadership</h5>
+                        <div class="d-flex flex-wrap gap-2 en">
+                            <span class="ios-pill">Engineering Leadership</span><span class="ios-pill">Technical Project Leadership</span><span class="ios-pill">Code Reviews</span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2 fr">
+                            <span class="ios-pill">Leadership Technique</span><span class="ios-pill">Leadership de Projet</span><span class="ios-pill">Revues de Code</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages (iOS Blue) -->
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4 text-center">
+                        <h6 class="fw-bold ios-text mb-3 fs-5 d-flex justify-content-center align-items-center"><i class="fa-solid fa-language ios-blue me-2 fs-4"></i><span class="en">Languages</span><span class="fr">Langues</span></h6>
+                        <div class="d-flex flex-wrap justify-content-center gap-2">
+                            <span class="ios-pill"><span class="en">French (Native)</span><span class="fr">Français (Maternel)</span></span>
+                            <span class="ios-pill"><span class="en">English (Professional)</span><span class="fr">Anglais (Professionnel)</span></span>
+                            <span class="ios-pill"><span class="en">Dutch (Elementary)</span><span class="fr">Néerlandais (Élémentaire)</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Skills (iOS Green) -->
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4 text-center">
+                        <h6 class="fw-bold ios-text mb-3 fs-5 d-flex justify-content-center align-items-center"><i class="fa-solid fa-microchip ios-green me-2 fs-4"></i><span class="en">Additional Skills</span><span class="fr">Compétences diverses</span></h6>
+                        <div class="d-flex flex-wrap justify-content-center gap-2">
+                            <span class="ios-pill">Machine Learning</span><span class="ios-pill">Computer Vision</span>
+                            <span class="ios-pill">Java (Spring)</span><span class="ios-pill">Agile/Scrum</span>
+                            <span class="ios-pill en">Technical Mentorship</span><span class="ios-pill fr">Mentorat technique</span>
+                            <span class="ios-pill en">Product Strategy</span><span class="ios-pill fr">Stratégie produit</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-5 section-padding mb-5">
+        <div class="container">
+            <h3 class="fw-bold fs-2 ios-text mb-5 text-center" data-aos="fade-up"><span class="en">Education</span><span class="fr">Formation</span></h3>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Masters Card -->
+                <div class="col-lg-10" data-aos="fade-up">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5 position-relative overflow-hidden">
+
+                        <!-- Watermark Icon fixed with custom CSS class -->
+                        <i class="fa-solid fa-graduation-cap watermark-icon"></i>
+
+                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row mb-3 position-relative z-1">
+                            <div>
+                                <h4 class="fw-bold ios-text mb-1">
+                                    <span class="en">Master's Degree in Computer Science</span>
+                                    <span class="fr">Master en Sciences Informatiques</span>
+                                </h4>
+                                <h5 class="ios-blue fw-semibold">Université de Liège, Belgium</h5>
+                            </div>
+                            <span class="ios-tag mt-2 mt-md-0">2012 – 2014</span>
+                        </div>
+
+                        <div class="mb-3 position-relative z-1">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold shadow-sm">Distinction</span>
+                        </div>
+
+                        <div class="ios-text-secondary position-relative z-1">
+                            <p class="en mb-2"><strong class="ios-text">Major in Management.</strong> Focus: Imagery, Infography, Networking, and High-Performance Computing.</p>
+                            <p class="en mb-0"><strong class="ios-text">Master Thesis:</strong> "Development of a synchronized iPad application for occupational health records." (Served as the technical precursor to the Andaman7 platform).</p>
+
+                            <p class="fr mb-2"><strong class="ios-text">Finalité spécialisée en Gestion.</strong> Options : Imagerie, Infographie, Réseaux et Calcul Haute Performance.</p>
+                            <p class="fr mb-0"><strong class="ios-text">Mémoire de fin d'études :</strong> "Développement d'une application iPad synchronisée pour les dossiers de santé au travail" (précurseur technique de la plateforme Andaman7).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bachelors Card -->
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5 position-relative overflow-hidden">
+
+                        <!-- Added Watermark Icon to second card -->
+                        <i class="fa-solid fa-graduation-cap watermark-icon"></i>
+
+                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row position-relative z-1">
+                            <div>
+                                <h4 class="fw-bold ios-text mb-1">
+                                    <span class="en">Bachelor's Degree in Computer Science</span>
+                                    <span class="fr">Bachelier en Sciences Informatiques</span>
+                                </h4>
+                                <h5 class="ios-blue fw-semibold mb-0">Université de Liège, Belgium</h5>
+                            </div>
+                            <span class="ios-tag mt-2 mt-md-0">2009 – 2012</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 text-center mt-5">
+        <div class="container">
+            <p class="mb-0 ios-text-secondary small fw-medium"><img class="text-icon" src="resources/coreon_logo_light.svg" alt="logo"/> <script>document.write(new Date().getFullYear())</script> Sébastien Hannay. <span class="en">Designed in Belgium.</span><span class="fr">Conçu en Belgique.</span></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/portfolio.js"></script>
+
+</body>
+</html>

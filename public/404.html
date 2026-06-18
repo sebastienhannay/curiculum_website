@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Sébastien Hannay</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="/css/404.css">
+</head>
+<body>
+
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+
+    <div class="error-container container d-flex justify-content-center align-items-center min-vh-100 position-relative z-1">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="ios-card ios-glass text-center p-4 p-md-5 shadow-lg border border-white border-opacity-50">
+
+                <i class="fa-brands fa-swift error-icon mb-3"></i>
+
+                <h1 class="error-code tracking-tight fw-bold mb-1">404</h1>
+                <h2 class="h4 fw-bold ios-text mb-2">Fatal error: Unexpectedly found nil</h2>
+                <p class="ios-text-secondary mb-4">While unwrapping an Optional view controller.</p>
+
+                <div class="xcode-block text-start shadow-sm mb-4">
+                    <div class="mac-buttons mb-3">
+                        <span class="mac-btn close-btn"></span>
+                        <span class="mac-btn min-btn"></span>
+                        <span class="mac-btn max-btn"></span>
+                    </div>
+                    <code class="xcode-font">
+                        <div><span class="xc-keyword">guard let</span> destination = requestedURL <span class="xc-keyword">else</span> {</div>
+                        <div class="ms-4"><span class="xc-function">print</span>(<span class="xc-string">"Looks like you're lost!"</span>)</div>
+                        <div class="ms-4"><span class="xc-keyword">return</span> <span class="xc-type">NavigationError</span>.<span class="xc-function">pageNotFound</span></div>
+                        <div>}</div>
+                    </code>
+                </div>
+
+                <a href="/" class="btn btn-ios-primary rounded-pill px-4 py-2 fw-medium shadow-sm">
+                    <i class="fa-solid fa-house me-2"></i> Return to Main Thread
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

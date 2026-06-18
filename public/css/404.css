@@ -1,0 +1,128 @@
+:root {
+    /* Apple iOS Color Palette */
+    --ios-bg: #F5F5F7;
+    --ios-card-bg: rgba(255, 255, 255, 0.7);
+    --ios-card-border: rgba(255, 255, 255, 0.5);
+    --ios-blue: #007AFF;
+    --ios-text: #1D1D1F;
+    --ios-text-secondary: #86868B;
+
+    /* System Fonts */
+    --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+    --font-mono: "SF Mono", Menlo, Consolas, Monaco, monospace;
+}
+
+body, html {
+    height: 100%;
+    background-color: var(--ios-bg);
+    color: var(--ios-text);
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden; /* Prevent scrolling on 404 */
+}
+
+/* Typography */
+.tracking-tight { letter-spacing: -0.04em; }
+.ios-text { color: var(--ios-text) !important; }
+.ios-text-secondary { color: var(--ios-text-secondary) !important; }
+
+/* Ambient Orbs */
+.ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.7;
+    animation: drift 15s infinite alternate ease-in-out;
+}
+.orb-1 {
+    width: 50vw; height: 50vh;
+    background: #e0eaff;
+    top: -10%; left: -10%;
+}
+.orb-2 {
+    width: 40vw; height: 40vh;
+    background: #fdf2f8;
+    bottom: -10%; right: -10%;
+}
+@keyframes drift {
+    100% { transform: translate(30px, 50px) scale(1.1); }
+}
+
+/* Glassmorphism Card */
+.ios-card {
+    border-radius: 32px;
+    background: var(--ios-card-bg);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* 404 Specifics */
+.error-icon {
+    font-size: 4.5rem;
+    /* Official Swift Gradient */
+    background: linear-gradient(135deg, #FD9426 0%, #F05138 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: springFloat 4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.error-code {
+    font-size: 5rem;
+    color: var(--ios-text);
+}
+
+@keyframes springFloat {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-12px) scale(1.05); }
+}
+
+/* Xcode Window Styling */
+.xcode-block {
+    background: #1e1e1e; /* Xcode Dark Theme */
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.mac-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.mac-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.close-btn { background-color: #FF5F56; }
+.min-btn { background-color: #FFBD2E; }
+.max-btn { background-color: #27C93F; }
+
+.xcode-font {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #FFFFFF;
+}
+
+/* Xcode Syntax Colors */
+.xc-keyword { color: #FF7AB2; font-weight: 500; }
+.xc-function { color: #78C2B3; }
+.xc-string { color: #FF8170; }
+.xc-type { color: #DABAFE; }
+
+/* Button */
+.btn-ios-primary {
+    background-color: var(--ios-blue);
+    color: white;
+    border: none;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s;
+}
+
+.btn-ios-primary:hover {
+    background-color: #0062CC;
+    color: white;
+    transform: scale(1.05); /* Spring click effect */
+}
