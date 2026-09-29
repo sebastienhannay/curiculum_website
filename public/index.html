@@ -60,9 +60,16 @@
     <link rel="icon" type="image/svg+xml" href="resources/coreon_logo_light.svg">
     <link rel="apple-touch-icon" href="resources/coreon_logo.png">
 
+    <script>
+        // Scroll-reveal only where it's reliable (mouse/trackpad devices).
+        // On touch devices iOS Safari delays visibility callbacks during
+        // momentum scrolling, so content would stay blank: show it instead.
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) document.documentElement.classList.add('js');
+    </script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/site.css">
 </head>
 <body class="lang-en" data-bs-spy="scroll" data-bs-target="#main-nav" data-bs-offset="120">
@@ -110,24 +117,24 @@
     <div class="ambient-orb orb-3"></div>
 
     <div class="container position-relative z-1 text-center">
-        <div data-aos="fade-up">
+        <div class="hero-anim" style="--hero-delay:0ms">
             <span class="status-pill ios-glass shadow-sm mb-4">
                 <span class="status-dot"></span>
                 <span class="en">Available for new projects</span><span class="fr">Disponible pour de nouveaux projets</span>
             </span>
         </div>
 
-        <h1 class="display-hero ios-text mb-4" data-aos="fade-up" data-aos-delay="50">
+        <h1 class="hero-anim display-hero ios-text mb-4" style="--hero-delay:50ms">
             <span class="en">Your app,<br>from idea to <span class="text-grad">App&nbsp;Store.</span></span>
             <span class="fr">Votre app,<br>de l'idée à l'<span class="text-grad">App&nbsp;Store.</span></span>
         </h1>
 
-        <p class="lead-xl mx-auto mb-5" style="max-width: 780px;" data-aos="fade-up" data-aos-delay="100">
+        <p class="hero-anim lead-xl mx-auto mb-5" style="max-width: 780px; --hero-delay:100ms">
             <span class="en">End-to-end mobile development for <strong>SaaS companies and startups</strong>: mockups, native iOS, web, APIs and backend, security, testing and store release. Android through a trusted partner. <strong>Thought by humans, accelerated by AI, reviewed by a senior engineer.</strong></span>
             <span class="fr">Développement mobile de bout en bout pour les <strong>éditeurs SaaS et les startups</strong> : maquettes, iOS natif, web, APIs et backend, sécurité, tests et publication sur les stores. Android avec un partenaire de confiance. <strong>Pensé par des humains, accéléré par l'IA, validé par un ingénieur senior.</strong></span>
         </p>
 
-        <div class="d-flex flex-wrap justify-content-center gap-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="hero-anim d-flex flex-wrap justify-content-center gap-3" style="--hero-delay:150ms">
             <a href="#contact" class="btn btn-ios-primary btn-lg-pill shadow">
                 <span class="en">Start your project</span><span class="fr">Lancer votre projet</span>
             </a>
@@ -136,7 +143,7 @@
             </a>
         </div>
 
-        <div class="phone-stage" data-aos="fade-up" data-aos-delay="200">
+        <div class="hero-anim phone-stage" style="--hero-delay:200ms">
             <div class="phone phone-left">
                 <img class="device-raw" src="resources/work/cheese-recipes.webp" alt="Cheese@home recipe list">
                 <span class="phone-label">Cheese@home</span>
@@ -212,9 +219,9 @@
                         </div>
                         <div class="col-md-6 d-none d-md-block">
                             <div class="case-phones three">
-                                <img class="device-raw" data-speed="0.04" src="resources/work/a7-summary.webp" alt="Andaman7 health record" loading="lazy">
-                                <img class="device-raw offset" data-speed="0.12" src="resources/work/cc-map.webp" alt="Circuit Court map" loading="lazy">
-                                <img class="device-raw" data-speed="0.06" src="resources/work/cheese-recipe.webp" alt="Cheese@home recipe" loading="lazy">
+                                <div class="shot"><img class="device-raw" data-speed="0.04" src="resources/work/a7-summary.webp" alt="Andaman7 health record" loading="lazy"></div>
+                                <div class="shot offset"><img class="device-raw" data-speed="0.12" src="resources/work/cc-map.webp" alt="Circuit Court map" loading="lazy"></div>
+                                <div class="shot"><img class="device-raw" data-speed="0.06" src="resources/work/cheese-recipe.webp" alt="Cheese@home recipe" loading="lazy"></div>
                             </div>
                         </div>
                     </div>
@@ -476,9 +483,9 @@
                 </div>
                 <div class="col-lg-6 p-4 p-lg-5">
                     <div class="case-phones three">
-                        <img class="device-raw" data-speed="0.06" src="resources/work/a7-timeline.webp" alt="Andaman7 medical timeline" loading="lazy">
-                        <img class="device-raw offset" data-speed="0.14" src="resources/work/a7-meds.webp" alt="Andaman7 medications" loading="lazy">
-                        <img class="device-raw" data-speed="0.03" src="resources/work/a7-documents.webp" alt="Andaman7 documents" loading="lazy">
+                        <div class="shot"><img class="device-raw" data-speed="0.06" src="resources/work/a7-timeline.webp" alt="Andaman7 medical timeline" loading="lazy"></div>
+                        <div class="shot offset"><img class="device-raw" data-speed="0.14" src="resources/work/a7-meds.webp" alt="Andaman7 medications" loading="lazy"></div>
+                        <div class="shot"><img class="device-raw" data-speed="0.03" src="resources/work/a7-documents.webp" alt="Andaman7 documents" loading="lazy"></div>
                     </div>
                 </div>
             </div>
@@ -507,8 +514,8 @@
                         <a class="link-arrow" href="https://cheeseathome.web.app" target="_blank" rel="noopener">cheeseathome.web.app <i class="fa-solid fa-arrow-right ms-1"></i></a>
                     </div>
                     <div class="case-phones mt-5" style="margin-bottom:-18%;">
-                        <img class="device-raw" data-speed="0.04" src="resources/work/cheese-timer.webp" alt="Cheese@home cooking timer" loading="lazy">
-                        <img class="device-raw offset" data-speed="0.1" src="resources/work/cheese-cellar.webp" alt="Cheese@home cellar" loading="lazy">
+                        <div class="shot"><img class="device-raw" data-speed="0.04" src="resources/work/cheese-timer.webp" alt="Cheese@home cooking timer" loading="lazy"></div>
+                        <div class="shot offset"><img class="device-raw" data-speed="0.1" src="resources/work/cheese-cellar.webp" alt="Cheese@home cellar" loading="lazy"></div>
                     </div>
                 </article>
             </div>
@@ -535,8 +542,8 @@
                         <a class="link-arrow" href="https://circuit-court.web.app" target="_blank" rel="noopener">circuit-court.web.app <i class="fa-solid fa-arrow-right ms-1"></i></a>
                     </div>
                     <div class="case-phones mt-5" style="margin-bottom:-18%;">
-                        <img class="device-raw" data-speed="0.04" src="resources/work/cc-merchant.webp" alt="Circuit Court merchant" loading="lazy">
-                        <img class="device-raw offset" data-speed="0.1" src="resources/work/cc-rewards.webp" alt="Circuit Court rewards" loading="lazy">
+                        <div class="shot"><img class="device-raw" data-speed="0.04" src="resources/work/cc-merchant.webp" alt="Circuit Court merchant" loading="lazy"></div>
+                        <div class="shot offset"><img class="device-raw" data-speed="0.1" src="resources/work/cc-rewards.webp" alt="Circuit Court rewards" loading="lazy"></div>
                     </div>
                 </article>
             </div>
@@ -818,8 +825,7 @@
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
 <script src="js/site.js"></script>
 </body>
 </html>

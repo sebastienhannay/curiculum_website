@@ -1,12 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Replicating iOS Spring Animation feel
-    AOS.init({
-        duration: 800,
-        easing: 'ease-out-back', // This creates the iOS "spring" bounce
-        once: true,
-        offset: 30,
-    });
-
     // Mobile Navbar handling
     if (typeof bootstrap !== 'undefined') {
         const navLinks = document.querySelectorAll('.nav-link');
@@ -37,6 +29,4 @@ function toggleLanguage() {
         html.lang = 'en';
     }
 
-    // Refresh layout calculations for spring animations
-    setTimeout(() => AOS.refresh(), 100);
 }

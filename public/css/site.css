@@ -153,18 +153,18 @@ img { max-width: 100%; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; overflow: hidden; padding: 150px 0 60px; }
+/* Soft glows drawn with radial gradients: same look as a blurred circle,
+   but no filter for Safari to recompute on every frame. */
 .ambient-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
     z-index: 0;
-    opacity: 0.7;
     animation: drift 16s infinite alternate ease-in-out;
     pointer-events: none;
 }
-.orb-1 { width: 520px; height: 520px; background: #dbe7ff; top: -140px; left: -160px; }
-.orb-2 { width: 420px; height: 420px; background: #fde2ec; top: 30%; right: -120px; animation-delay: -5s; }
-.orb-3 { width: 360px; height: 360px; background: #e6e3ff; bottom: -120px; left: 35%; animation-delay: -9s; }
+.orb-1 { width: 760px; height: 760px; background: radial-gradient(closest-side, rgba(203, 221, 255, 0.85), rgba(203, 221, 255, 0)); top: -260px; left: -280px; }
+.orb-2 { width: 640px; height: 640px; background: radial-gradient(closest-side, rgba(252, 214, 228, 0.8), rgba(252, 214, 228, 0)); top: 25%; right: -230px; animation-delay: -5s; }
+.orb-3 { width: 560px; height: 560px; background: radial-gradient(closest-side, rgba(221, 217, 255, 0.8), rgba(221, 217, 255, 0)); bottom: -220px; left: 30%; animation-delay: -9s; }
 @keyframes drift { 100% { transform: translate(40px, 50px) scale(1.12); } }
 
 .status-pill {
@@ -220,18 +220,17 @@ img { max-width: 100%; }
     .phone-stage .phone-label { display: none; }
 }
 
-/* Device frame (for raw screenshots) */
-.device {
-    background: #1d1d1f;
-    padding: 3.2%;
-    border-radius: 16% / 7.4%;
-    box-shadow:
-        0 0 0 1.5px #3a3a3c inset,
-        0 30px 60px -15px rgba(0, 0, 0, 0.35),
-        0 18px 36px -18px rgba(0, 0, 0, 0.4);
+/* Framed screenshots: Apple bezel + soft shadow baked into the image.
+   Each image is the 700x1431 phone plus transparent padding for the shadow
+   (56px left/right, 40px top, 80px bottom => 812x1551). The width/margins
+   below cancel that padding, so the phone itself fills its slot exactly.
+   Percentage margins resolve against the parent's width (the phone slot). */
+.device-raw {
+    display: block;
+    width: 116%;              /* 812 / 700 */
+    max-width: none;
+    margin: -5.714% -8% -11.429%;  /* 40/700, 56/700, 80/700 */
 }
-.device img { display: block; width: 100%; border-radius: 13% / 6%; }
-.device-raw { display: block; width: 100%; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.25)); }
 
 /* ---------- Stats strip ---------- */
 .stats { border-top: 1px solid var(--ios-hairline); border-bottom: 1px solid var(--ios-hairline); }
@@ -591,7 +590,6 @@ footer a:hover { color: var(--ios-text); }
 }
 
 /* ---------- Framed screenshots ---------- */
-.device-raw { filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.22)); }
 .case-phones.three > * { width: 31%; }
 .case-phones.three > .offset { transform: translateY(-6%); }
 
@@ -631,9 +629,21 @@ footer a:hover { color: var(--ios-text); }
     transform: scaleX(0);
     pointer-events: none;
 }
-[data-speed], .phone-stage .phone, .ambient-orb, .dark-glow { will-change: translate; }
+[data-speed], .phone-stage .phone { will-change: translate; }
 .text-grad, .text-grad-dark { background-size: 200% auto; animation: shimmer 8s ease-in-out infinite alternate; }
 @keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+/* Phones and tablets: skip effects that are costly in mobile Safari.
+   - the shimmer repaints large text every frame
+   - backdrop blur on cards over a flat background is invisible but still
+     computed live; only the menu bar (over moving content) keeps its glass */
+@media (hover: none) {
+    .text-grad, .text-grad-dark { animation: none; }
+    .ios-glass:not(.custom-nav) {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.86);
+    }
+}
 @media (prefers-reduced-motion: reduce) { .scroll-progress { display: none; } }
 
 /* ---------- Mobile ---------- */
@@ -657,6 +667,8 @@ footer a:hover { color: var(--ios-text); }
     .snap-row::-webkit-scrollbar { display: none; }
     .snap-row > * { flex: 0 0 84%; max-width: 84%; scroll-snap-align: start; }
     .snap-row .ios-card.lift:hover { transform: none; }
+    /* Pre-render the off-screen cards so swiping doesn't show blank tiles */
+    .snap-row > * { transform: translateZ(0); }
     .swipe-hint {
         display: block;
         text-align: right;
@@ -681,4 +693,24 @@ footer a:hover { color: var(--ios-text); }
     footer { text-align: center; }
     footer .d-flex.gap-3 { flex-wrap: wrap; justify-content: center; }
     footer a { display: inline-block; padding: 0.6rem 0.2rem; }
+}
+
+/* ---------- Hero entrance: pure CSS, plays on first paint (no JS needed) ---------- */
+.hero-anim { animation: heroIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--hero-delay, 0ms) both; }
+@keyframes heroIn { from { opacity: 0; transform: translateY(24px); } }
+@media (prefers-reduced-motion: reduce) { .hero-anim { animation: none; } }
+
+/* ---------- Reveal on scroll (replaces AOS) ---------- */
+/* Hidden only when JS runs, so content never stays invisible */
+.js [data-aos] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.6s ease var(--reveal-delay, 0ms),
+        transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) var(--reveal-delay, 0ms);
+}
+.js [data-aos="zoom-in"] { transform: scale(0.94); }
+.js [data-aos].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    .js [data-aos] { opacity: 1; transform: none; transition: none; }
 }
