@@ -3,345 +3,823 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sébastien Hannay - Senior iOS Engineer</title>
+    <title>Sébastien Hannay — Mobile apps for SaaS, from idea to App Store</title>
+    <meta name="description" content="End-to-end mobile product development for SaaS companies and startups: UX mockups, native iOS, web, APIs, backend, security, testing and App Store delivery. Android through a trusted partner. AI-accelerated, senior-reviewed. Based in Belgium.">
+    <link rel="canonical" href="https://sebastienhannay.web.app/">
+    <meta name="author" content="Sébastien Hannay">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sebastienhannay.web.app/">
+    <meta property="og:site_name" content="Sébastien Hannay">
+    <meta property="og:title" content="Your app, from idea to App Store — Sébastien Hannay">
+    <meta property="og:description" content="End-to-end mobile development for SaaS: design, iOS, web, backend, security, testing and delivery. Thought by humans, accelerated by AI, reviewed by a senior engineer.">
+    <meta property="og:image" content="https://sebastienhannay.web.app/resources/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fr_BE">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your app, from idea to App Store — Sébastien Hannay">
+    <meta name="twitter:description" content="End-to-end mobile development for SaaS: design, iOS, web, backend, security, testing and delivery.">
+    <meta name="twitter:image" content="https://sebastienhannay.web.app/resources/og-image.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://sebastienhannay.web.app/#person",
+          "name": "Sébastien Hannay",
+          "jobTitle": "Freelance iOS & mobile product engineer",
+          "url": "https://sebastienhannay.web.app/",
+          "image": "https://sebastienhannay.web.app/resources/profile.jpg",
+          "email": "mailto:seb.hannay@gmail.com",
+          "address": { "@type": "PostalAddress", "addressLocality": "Liège", "addressCountry": "BE" },
+          "alumniOf": { "@type": "CollegeOrUniversity", "name": "Université de Liège" },
+          "knowsLanguage": ["fr", "en"],
+          "knowsAbout": ["iOS development", "Swift", "SwiftUI", "SaaS", "Mobile app development", "Backend development", "Healthcare software", "FHIR", "GDPR"],
+          "sameAs": ["https://linkedin.com/in/sebastienhannay", "https://github.com/sebastienhannay"]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://sebastienhannay.web.app/#service",
+          "name": "Sébastien Hannay — Mobile apps for SaaS",
+          "url": "https://sebastienhannay.web.app/",
+          "image": "https://sebastienhannay.web.app/resources/og-image.jpg",
+          "description": "End-to-end mobile product development for SaaS companies and startups: UX/UI design, native iOS, Android through a partner, web services and backend, security, testing and App Store delivery.",
+          "founder": { "@id": "https://sebastienhannay.web.app/#person" },
+          "areaServed": ["BE", "FR", "LU", "NL", "Europe"],
+          "address": { "@type": "PostalAddress", "addressLocality": "Liège", "addressCountry": "BE" },
+          "availableLanguage": ["French", "English"],
+          "serviceType": ["iOS app development", "Android app development", "Mobile app design", "Backend and API development", "Website development", "Technical leadership"]
+        }
+      ]
+    }
+    </script>
+    <meta name="theme-color" content="#F5F5F7">
     <link rel="icon" type="image/svg+xml" href="resources/coreon_logo_light.svg">
     <link rel="apple-touch-icon" href="resources/coreon_logo.png">
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Custom iOS CSS -->
-    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/site.css">
 </head>
-<body class="lang-en" data-bs-spy="scroll" data-bs-target="#main-nav" data-bs-smooth-scroll="true">
+<body class="lang-en" data-bs-spy="scroll" data-bs-target="#main-nav" data-bs-offset="120">
+<script>
+    // Pick the language before first paint: saved choice, then browser language.
+    (function () {
+        var lang = 'en';
+        try { lang = localStorage.getItem('lang') || ((navigator.language || '').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en'); } catch (e) {}
+        if (lang === 'fr') { document.body.className = 'lang-fr'; document.documentElement.lang = 'fr'; }
+    })();
+</script>
 
-    <!-- Floating iOS Dock Navigation -->
-    <div class="nav-container fixed-top mt-4 d-flex justify-content-center z-3">
-        <!-- Replaced 'rounded-pill' with 'custom-nav' -->
-        <nav id="main-nav" class="navbar navbar-expand-md navbar-light ios-glass custom-nav px-4 py-2 shadow-sm">
-            <a class="navbar-brand fw-bold ios-text fs-5 me-4" href="#"><img class="text-icon" src="resources/coreon_logo_light.svg" alt="logo"/> SH</a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto fw-medium gap-1">
-                    <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#profile"><span class="en">Profile</span><span class="fr">Profil</span></a></li>
-                    <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#experience"><span class="en">Experience</span><span class="fr">Expérience</span></a></li>
-                    <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#expertise"><span class="en">Expertise</span><span class="fr">Expertise</span></a></li>
-                    <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#education"><span class="en">Education</span><span class="fr">Formation</span></a></li>
-                </ul>
-                <button class="btn btn-ios-primary rounded-pill btn-sm ms-md-3 px-3 py-2 fw-medium shadow-sm lang-switch" onclick="toggleLanguage()">
-                    <i class="fa-solid fa-globe me-1"></i>
-                    <span class="en">EN</span>
-                    <span class="fr">FR</span>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<div class="nav-container fixed-top d-flex justify-content-center z-3">
+    <nav id="main-nav" class="navbar navbar-expand-md navbar-light ios-glass custom-nav px-3 px-md-4 py-2 shadow-sm">
+        <a class="navbar-brand fw-bold ios-text fs-5 me-3" href="#top"><img class="brand-mark" src="resources/coreon_logo_light.svg" alt=""> Sébastien Hannay</a>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto fw-medium gap-1">
+                <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#process"><span class="en">Process</span><span class="fr">Méthode</span></a></li>
+                <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#work"><span class="en">Work</span><span class="fr">Réalisations</span></a></li>
+                <li class="nav-item"><a class="nav-link rounded-pill px-3" href="#engage"><span class="en">Offers</span><span class="fr">Formules</span></a></li>
+            </ul>
+            <div class="d-flex align-items-center gap-2 mt-2 mt-md-0">
+                <button class="btn lang-btn rounded-pill btn-sm px-3 py-2 fw-semibold" onclick="toggleLanguage()" aria-label="Switch language">
+                    <span class="en">FR</span><span class="fr">EN</span>
                 </button>
+                <a href="#contact" class="btn btn-ios-primary rounded-pill btn-sm px-3 py-2 fw-semibold">
+                    <span class="en">Start a project</span><span class="fr">Démarrer un projet</span>
+                </a>
             </div>
-        </nav>
+        </div>
+    </nav>
+</div>
+
+<!-- ============ HERO ============ -->
+<header id="top" class="hero">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <div class="container position-relative z-1 text-center">
+        <div data-aos="fade-up">
+            <span class="status-pill ios-glass shadow-sm mb-4">
+                <span class="status-dot"></span>
+                <span class="en">Available for new projects</span><span class="fr">Disponible pour de nouveaux projets</span>
+            </span>
+        </div>
+
+        <h1 class="display-hero ios-text mb-4" data-aos="fade-up" data-aos-delay="50">
+            <span class="en">Your app,<br>from idea to <span class="text-grad">App&nbsp;Store.</span></span>
+            <span class="fr">Votre app,<br>de l'idée à l'<span class="text-grad">App&nbsp;Store.</span></span>
+        </h1>
+
+        <p class="lead-xl mx-auto mb-5" style="max-width: 780px;" data-aos="fade-up" data-aos-delay="100">
+            <span class="en">End-to-end mobile development for <strong>SaaS companies and startups</strong>: mockups, native iOS, web, APIs and backend, security, testing and store release. Android through a trusted partner. <strong>Thought by humans, accelerated by AI, reviewed by a senior engineer.</strong></span>
+            <span class="fr">Développement mobile de bout en bout pour les <strong>éditeurs SaaS et les startups</strong> : maquettes, iOS natif, web, APIs et backend, sécurité, tests et publication sur les stores. Android avec un partenaire de confiance. <strong>Pensé par des humains, accéléré par l'IA, validé par un ingénieur senior.</strong></span>
+        </p>
+
+        <div class="d-flex flex-wrap justify-content-center gap-3" data-aos="fade-up" data-aos-delay="150">
+            <a href="#contact" class="btn btn-ios-primary btn-lg-pill shadow">
+                <span class="en">Start your project</span><span class="fr">Lancer votre projet</span>
+            </a>
+            <a href="#process" class="btn btn-ios-secondary btn-lg-pill">
+                <span class="en">See how it works</span><span class="fr">Voir la méthode</span> <i class="fa-solid fa-arrow-down ms-1"></i>
+            </a>
+        </div>
+
+        <div class="phone-stage" data-aos="fade-up" data-aos-delay="200">
+            <div class="phone phone-left">
+                <img class="device-raw" src="resources/work/cheese-recipes.webp" alt="Cheese@home recipe list">
+                <span class="phone-label">Cheese@home</span>
+            </div>
+            <div class="phone phone-center">
+                <img class="device-raw" src="resources/work/a7-home.webp" alt="Andaman7 patient record">
+                <span class="phone-label">Andaman7</span>
+            </div>
+            <div class="phone phone-right">
+                <img class="device-raw" src="resources/work/cc-home.webp" alt="Circuit Court home screen">
+                <span class="phone-label">Circuit Court</span>
+            </div>
+        </div>
     </div>
+</header>
 
-    <!-- Hero Section -->
-    <header class="hero-section min-vh-100 d-flex align-items-center position-relative overflow-hidden">
-        <!-- Ambient Background Orbs -->
-        <div class="ambient-orb orb-1"></div>
-        <div class="ambient-orb orb-2"></div>
+<!-- ============ STATS ============ -->
+<section class="stats py-5 mt-5">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-6 col-md-3" data-aos="fade-up">
+                <div class="stat-value text-grad">SaaS</div>
+                <div class="stat-label"><span class="en">multi-tenant & white-label platforms</span><span class="fr">plateformes multi-clients & marque blanche</span></div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
+                <div class="stat-value text-grad"><span class="count" data-to="12">12</span> <span class="en">yrs</span><span class="fr">ans</span></div>
+                <div class="stat-label"><span class="en">of apps running in production</span><span class="fr">d'apps en production</span></div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-value text-grad"><span class="count" data-to="9">9</span></div>
+                <div class="stat-label"><span class="en">stages, mockup to maintenance</span><span class="fr">étapes, de la maquette à la maintenance</span></div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
+                <div class="stat-value text-grad"><span class="count" data-to="2">2</span></div>
+                <div class="stat-label"><span class="en">native platforms, Android with a partner</span><span class="fr">plateformes natives, Android avec un partenaire</span></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <div class="container pt-5 mt-5">
-            <div class="row align-items-center flex-column-reverse flex-lg-row">
-                <div class="col-lg-7 text-center text-lg-start mt-5 mt-lg-0 z-1" data-aos="fade-up">
-                    <h1 class="display-2 fw-bold ios-text mb-2 tracking-tight">Sébastien Hannay</h1>
-                    <h2 class="h3 ios-text-secondary fw-semibold mb-4">
-                        <span class="en">Senior iOS Engineer & Tech Lead</span>
-                        <span class="fr">Ingénieur iOS Senior & Tech Lead</span>
+<!-- ============ SERVICES ============ -->
+<section id="services" class="section-pad">
+    <div class="container">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow">Services</span>
+            <h2 class="display-section ios-text mb-3">
+                <span class="en">Everything your product needs.<br><span class="ios-text-secondary">Nothing it doesn't.</span></span>
+                <span class="fr">Tout ce dont votre produit a besoin.<br><span class="ios-text-secondary">Rien de superflu.</span></span>
+            </h2>
+            <p class="lead-xl mb-0">
+                <span class="en">A senior engineer for the whole mobile stack, teamed with a trusted Android partner when you need both platforms. No agency overhead, no juggling a crowd of freelancers.</span>
+                <span class="fr">Un ingénieur senior pour toute la stack mobile, associé à un partenaire Android de confiance quand il vous faut les deux plateformes. Sans lourdeur d'agence, sans jongler entre une armée de freelances.</span>
+            </p>
+        </div>
+
+                <p class="swipe-hint"><span class="en">Swipe to see more</span><span class="fr">Glissez pour voir la suite</span> <i class="fa-solid fa-arrow-right"></i></p>
+        <div class="row g-4 snap-row">
+            <!-- SaaS mobile -->
+            <div class="col-lg-8" data-aos="fade-up">
+                <div class="ios-card ios-glass lift shadow-sm service-card">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-6">
+                            <div class="service-icon bg-server"><i class="fa-solid fa-layer-group"></i></div>
+                            <h3 class="ios-text"><span class="en">Mobile apps for SaaS</span><span class="fr">Apps mobiles pour SaaS</span></h3>
+                            <p>
+                                <span class="en">Native companion apps for your platform: accounts and roles, multi-tenant data, subscriptions and in-app purchases, offline sync, push notifications, and white-label variants for your customers, all from a single codebase.</span>
+                                <span class="fr">L'app native de votre plateforme : comptes et rôles, données multi-clients, abonnements et achats intégrés, synchronisation hors ligne, notifications push, et déclinaisons en marque blanche pour vos clients, depuis une seule base de code.</span>
+                            </p>
+                            <div>
+                                <span class="chip">Multi-tenant</span><span class="chip">White-label</span><span class="chip"><span class="en">Subscriptions</span><span class="fr">Abonnements</span></span>
+                                <span class="chip">Offline sync</span><span class="chip">Push</span><span class="chip">SSO</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-none d-md-block">
+                            <div class="case-phones three">
+                                <img class="device-raw" data-speed="0.04" src="resources/work/a7-summary.webp" alt="Andaman7 health record" loading="lazy">
+                                <img class="device-raw offset" data-speed="0.12" src="resources/work/cc-map.webp" alt="Circuit Court map" loading="lazy">
+                                <img class="device-raw" data-speed="0.06" src="resources/work/cheese-recipe.webp" alt="Cheese@home recipe" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iOS -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+                <div class="ios-card ios-glass lift shadow-sm service-card">
+                    <div class="service-icon bg-swift"><i class="fa-brands fa-swift"></i></div>
+                    <h3 class="ios-text"><span class="en">Native iOS</span><span class="fr">iOS natif</span></h3>
+                    <p>
+                        <span class="en">Fast, accessible, polished apps for iPhone and iPad, built with Apple's latest frameworks and design language.</span>
+                        <span class="fr">Des apps rapides, accessibles et soignées pour iPhone et iPad, avec les derniers frameworks et le langage visuel d'Apple.</span>
+                    </p>
+                    <div><span class="chip">Swift</span><span class="chip">SwiftUI</span><span class="chip">UIKit</span><span class="chip">Liquid Glass</span><span class="chip">WidgetKit</span><span class="chip">Live Activities</span><span class="chip">StoreKit 2</span></div>
+                </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="50">
+                <div class="ios-card ios-glass lift shadow-sm service-card">
+                    <div class="service-icon bg-web" style="background: linear-gradient(135deg, #7D7AFF, #5856D6); color:#5856D6;"><i class="fa-solid fa-server"></i></div>
+                    <h3 class="ios-text"><span class="en">Web services & backend</span><span class="fr">Web services & backend</span></h3>
+                    <p>
+                        <span class="en">Documented REST APIs, authentication, database, file storage, push and third-party integrations. Sized for where the product is today, ready to scale.</span>
+                        <span class="fr">APIs REST documentées, authentification, base de données, stockage de fichiers, push et intégrations tierces. Dimensionné pour le produit d'aujourd'hui, prêt à grandir.</span>
+                    </p>
+                    <div><span class="chip">REST / OpenAPI</span><span class="chip">OAuth 2 / OIDC</span><span class="chip">Firebase</span><span class="chip">Java Spring</span></div>
+                </div>
+            </div>
+
+            <!-- Web -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="ios-card ios-glass lift shadow-sm service-card">
+                    <div class="service-icon bg-web"><i class="fa-solid fa-globe"></i></div>
+                    <h3 class="ios-text"><span class="en">Websites & back-office</span><span class="fr">Sites & back-office</span></h3>
+                    <p>
+                        <span class="en">Marketing sites and landing pages that sell the app, plus admin dashboards to manage users, content and customers. Fast, multilingual, SEO-ready.</span>
+                        <span class="fr">Sites vitrines et landing pages qui vendent l'app, et back-offices pour gérer utilisateurs, contenus et clients. Rapides, multilingues, optimisés SEO.</span>
+                    </p>
+                    <div><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">Firebase Hosting</span></div>
+                </div>
+            </div>
+
+            <!-- Regulated data -->
+            <div class="col-lg-6" data-aos="fade-up">
+                <div class="ios-card ios-glass lift shadow-sm service-card">
+                    <div class="service-icon bg-health"><i class="fa-solid fa-shield-heart"></i></div>
+                    <h3 class="ios-text"><span class="en">Sensitive & health data</span><span class="fr">Données sensibles & santé</span></h3>
+                    <p>
+                        <span class="en">A specialty built over a decade of healthcare SaaS: encrypted sync, consent, GDPR, audit trails, and interoperability with hospital systems through FHIR and HL7 when needed.</span>
+                        <span class="fr">Une spécialité forgée en plus de dix ans de SaaS santé : synchronisation chiffrée, consentement, RGPD, traçabilité, et interopérabilité avec les systèmes hospitaliers via FHIR et HL7 si nécessaire.</span>
+                    </p>
+                    <div><span class="chip">RGPD / GDPR</span><span class="chip"><span class="en">Encryption</span><span class="fr">Chiffrement</span></span><span class="chip">FHIR / HL7</span><span class="chip"><span class="en">Clinical trials</span><span class="fr">Essais cliniques</span></span></div>
+                </div>
+            </div>
+
+            <!-- Tech lead -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="50">
+                <div class="ios-card ios-glass lift shadow-sm service-card">
+                    <div class="service-icon bg-lead"><i class="fa-solid fa-compass-drafting"></i></div>
+                    <h3 class="ios-text"><span class="en">Existing apps & tech lead</span><span class="fr">Apps existantes & tech lead</span></h3>
+                    <p>
+                        <span class="en">Taking over or scaling an existing app: legacy Objective-C/Swift modernization, CI/CD and release processes, AI tooling for the team, and technical leadership.</span>
+                        <span class="fr">Reprendre ou faire grandir une app existante : modernisation de code Objective-C/Swift, CI/CD et processus de release, outils IA pour l'équipe, et leadership technique.</span>
+                    </p>
+                    <div><span class="chip">MVVM</span><span class="chip">Clean Architecture</span><span class="chip">CI/CD</span><span class="chip">Code review</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="partner-band shadow-sm mt-4" data-aos="fade-up">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-4 order-lg-2">
+                    <div class="platform-duo">
+                        <div class="platform-tile apple"><i class="fa-brands fa-apple"></i></div>
+                        <span class="platform-plus">+</span>
+                        <div class="platform-tile droid"><i class="fa-brands fa-android"></i></div>
+                    </div>
+                </div>
+                <div class="col-lg-8 order-lg-1">
+                    <span class="eyebrow"><span class="en">iOS and Android</span><span class="fr">iOS et Android</span></span>
+                    <h2 class="fw-bold ios-text mb-3" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -0.035em;">
+                        <span class="en">Two platforms. One team you can trust.</span>
+                        <span class="fr">Deux plateformes. Une équipe de confiance.</span>
                     </h2>
-
-                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mt-4">
-                        <a href="mailto:seb.hannay@gmail.com" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-solid fa-envelope me-2"></i>Email</a>
-                        <a href="tel:+32496315441" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-solid fa-phone me-2"></i>+32 496 31 54 41</a>
-                        <a href="https://linkedin.com/in/sebastienhannay" target="_blank" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-brands fa-linkedin me-2"></i>LinkedIn</a>
-                        <a href="https://github.com/sebastienhannay" target="_blank" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-brands fa-github me-2"></i>Github</a>
-                        <span class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium pointer-events-none"><i class="fa-solid fa-location-dot me-2"></i>Crisnée, BE</span>
-                    </div>
-                </div>
-                <div class="col-lg-5 text-center z-1" data-aos="zoom-in">
-                    <img src="resources/profile.jpg" alt="Sébastien Hannay" class="img-fluid profile-squircle shadow-lg border border-white border-opacity-50">
+                    <p class="lead-xl mb-0">
+                        <span class="en">Need Android too? A trusted Android engineer with the same background and standards joins the project. You work directly with both of us, <strong>on one shared architecture, one backend and coordinated releases.</strong></span>
+                        <span class="fr">Besoin d'Android aussi ? Un ingénieur Android de confiance, au parcours et aux exigences identiques, rejoint le projet. Vous travaillez directement avec nous deux, <strong>sur une architecture commune, un seul backend et des releases coordonnées.</strong></span>
+                    </p>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <!-- Profile Section -->
-    <section id="profile" class="py-5 section-padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10" data-aos="fade-up">
-                    <div class="ios-card ios-glass shadow-sm">
-                        <div class="card-body p-4 p-md-5 text-center">
-                            <img src="resources/coreon_logo_light.svg" width="24px" height="24px" alt="logo"/>
-                            <p class="en lead fw-medium ios-text mb-0 lh-base">Senior iOS Engineer with 10+ years of experience building production mobile applications, primarily in the healthcare domain. Specialist in evolving mobile architectures and delivering secure, patient-centric features for clinical environments. Proven Tech Lead capable of guiding technical strategy across mobile and backend components while maintaining high engineering standards.</p>
-                            <p class="fr lead fw-medium ios-text mb-0 lh-base">Ingénieur iOS Senior avec plus de 10 ans d'expérience dans le développement d'applications mobiles de production, principalement dans le secteur de la santé (HealthTech). Spécialiste de l'évolution des architectures mobiles et de la mise en œuvre de fonctionnalités sécurisées et centrées sur le patient. Tech Lead confirmé, capable de piloter la stratégie technique sur les composants mobiles et backend tout en maintenant des standards d'ingénierie élevés.</p>
-                        </div>
+<!-- ============ PROCESS ============ -->
+<section id="process" class="section-pad pt-0">
+    <div class="container">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow"><span class="en">The complete process</span><span class="fr">Le processus complet</span></span>
+            <h2 class="display-section ios-text mb-3">
+                <span class="en">From first sketch<br>to App Store, <span class="text-grad">and beyond.</span></span>
+                <span class="fr">Du premier croquis<br>à l'App Store, <span class="text-grad">et après.</span></span>
+            </h2>
+            <p class="lead-xl mb-0">
+                <span class="en">Every stage of a professional mobile project, covered and documented.</span>
+                <span class="fr">Chaque étape d'un projet mobile professionnel, couverte et documentée.</span>
+            </p>
+        </div>
+
+                <p class="swipe-hint"><span class="en">Swipe to see more</span><span class="fr">Glissez pour voir la suite</span> <i class="fa-solid fa-arrow-right"></i></p>
+        <div class="row g-3 snap-row">
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#007AFF">01</span>
+                        <h3><span class="en">Discovery & scoping</span><span class="fr">Cadrage</span></h3>
                     </div>
+                    <p><span class="en">Goals, users and business model turned into a prioritized MVP scope and a clear quote.</span><span class="fr">Objectifs, utilisateurs et modèle économique traduits en périmètre MVP priorisé et devis clair.</span></p>
+                    <div><span class="chip"><span class="en">Workshops</span><span class="fr">Ateliers</span></span><span class="chip"><span class="en">User journeys</span><span class="fr">Parcours utilisateurs</span></span><span class="chip">Roadmap</span><span class="chip"><span class="en">Quote</span><span class="fr">Devis</span></span></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#AF52DE">02</span>
+                        <h3><span class="en">UX & UI design</span><span class="fr">Design UX & UI</span></h3>
+                    </div>
+                    <p><span class="en">Wireframes, high-fidelity mockups and a clickable prototype, following Apple and Material guidelines.</span><span class="fr">Wireframes, maquettes haute fidélité et prototype cliquable, selon les guidelines Apple et Material.</span></p>
+                    <div><span class="chip"><span class="en">Mockups</span><span class="fr">Maquettes</span></span><span class="chip">Design system</span><span class="chip">Prototype</span><span class="chip"><span class="en">Accessibility</span><span class="fr">Accessibilité</span></span></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#5856D6">03</span>
+                        <h3>Architecture</h3>
+                    </div>
+                    <p><span class="en">Foundations that won't need a rewrite: data model, API contract, hosting and a testable app structure.</span><span class="fr">Des fondations qui ne seront pas à réécrire : modèle de données, contrat d'API, hébergement et structure testable.</span></p>
+                    <div><span class="chip"><span class="en">Data model</span><span class="fr">Modèle de données</span></span><span class="chip">OpenAPI</span><span class="chip">MVVM</span><span class="chip">Clean Architecture</span></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#F05138">04</span>
+                        <h3><span class="en">App development</span><span class="fr">Développement de l'app</span></h3>
+                    </div>
+                    <p><span class="en">Native iOS in SwiftUI, Android in Kotlin with the partner, with regular test builds along the way.</span><span class="fr">iOS natif en SwiftUI, Android en Kotlin avec le partenaire, avec des versions de test régulières.</span></p>
+                    <div><span class="chip"><span class="en">Offline mode</span><span class="fr">Mode hors ligne</span></span><span class="chip">Push</span><span class="chip"><span class="en">In-app purchases</span><span class="fr">Achats intégrés</span></span><span class="chip"><span class="en">Localization</span><span class="fr">Traductions</span></span></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#5AC8FA">05</span>
+                        <h3>Web services & backend</h3>
+                    </div>
+                    <p><span class="en">Documented APIs, authentication, database, storage and the integrations your product relies on.</span><span class="fr">APIs documentées, authentification, base de données, stockage et les intégrations dont le produit a besoin.</span></p>
+                    <div><span class="chip"><span class="en">REST APIs</span><span class="fr">APIs REST</span></span><span class="chip">OAuth 2 / SSO</span><span class="chip">Back-office</span><span class="chip"><span class="en">Integrations</span><span class="fr">Intégrations</span></span></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#FF3B30">06</span>
+                        <h3><span class="en">Security & privacy</span><span class="fr">Sécurité & confidentialité</span></h3>
+                    </div>
+                    <p><span class="en">Built in from day one: encryption in transit and at rest, secure sessions, GDPR by design.</span><span class="fr">Intégrées dès le premier jour : chiffrement en transit et au repos, sessions sécurisées, RGPD by design.</span></p>
+                    <div><span class="chip"><span class="en">Encryption</span><span class="fr">Chiffrement</span></span><span class="chip">Keychain</span><span class="chip">OWASP MASVS</span><span class="chip"><span class="en">GDPR</span><span class="fr">RGPD</span></span></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#34C759">07</span>
+                        <h3><span class="en">Testing & quality</span><span class="fr">Tests & qualité</span></h3>
+                    </div>
+                    <p><span class="en">Automated tests on critical paths, CI on every change, beta testing and crash monitoring.</span><span class="fr">Tests automatisés sur les parcours critiques, CI à chaque changement, bêta-tests et suivi des crashs.</span></p>
+                    <div><span class="chip"><span class="en">Unit & UI tests</span><span class="fr">Tests unitaires & UI</span></span><span class="chip">CI/CD</span><span class="chip">TestFlight</span><span class="chip">Monitoring</span></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#FF9500">08</span>
+                        <h3><span class="en">Launch & delivery</span><span class="fr">Lancement & livraison</span></h3>
+                    </div>
+                    <p><span class="en">Store submission through review, localized store listings, marketing site and a clean handover.</span><span class="fr">Soumission jusqu'à la validation, fiches store traduites, site vitrine et transmission propre.</span></p>
+                    <div><span class="chip">App Store</span><span class="chip">Play Store</span><span class="chip"><span class="en">Website</span><span class="fr">Site web</span></span><span class="chip">Documentation</span></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="process-card ios-card ios-glass shadow-sm h-100">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="step-badge" style="--c:#8E8E93">09</span>
+                        <h3><span class="en">Maintenance & evolution</span><span class="fr">Maintenance & évolution</span></h3>
+                    </div>
+                    <p><span class="en">OS updates, dependency upgrades, fixes and new features driven by real usage.</span><span class="fr">Mises à jour OS, dépendances, correctifs et nouvelles fonctionnalités guidées par l'usage réel.</span></p>
+                    <div><span class="chip"><span class="en">OS updates</span><span class="fr">Mises à jour OS</span></span><span class="chip"><span class="en">Security patches</span><span class="fr">Correctifs sécurité</span></span><span class="chip"><span class="en">New features</span><span class="fr">Nouveautés</span></span></div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-5 section-padding">
-        <div class="container">
-            <h3 class="fw-bold fs-2 ios-text mb-5 text-center" data-aos="fade-up"><span class="en">Experience</span><span class="fr">Expérience</span></h3>
+        <div class="included-row mt-4" data-aos="fade-up">
+            <span class="inc-title"><span class="en">Always included</span><span class="fr">Toujours inclus</span></span>
+            <span class="inc"><i class="fa-solid fa-key ios-blue"></i><span class="en">Code & accounts in your name</span><span class="fr">Code & comptes à votre nom</span></span>
+            <span class="inc"><i class="fa-solid fa-book ios-indigo"></i>Documentation</span>
+            <span class="inc"><i class="fa-solid fa-vial-circle-check ios-green"></i><span class="en">Automated tests</span><span class="fr">Tests automatisés</span></span>
+            <span class="inc"><i class="fa-solid fa-lock ios-red"></i><span class="en">GDPR-ready</span><span class="fr">Conforme RGPD</span></span>
+            <span class="inc"><i class="fa-solid fa-universal-access ios-teal"></i><span class="en">Accessibility</span><span class="fr">Accessibilité</span></span>
+        </div>
+    </div>
+</section>
 
-            <div class="row g-4 justify-content-center">
-                <!-- Role 1: Tech Lead -->
-                <div class="col-12 col-lg-10" data-aos="fade-up">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5">
-                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row mb-4">
-                            <div>
-                                <h4 class="fw-bold ios-text mb-1">Tech Lead</h4>
-                                <h5 class="ios-blue fw-semibold"><a href="https://www.andaman7.com">Andaman7 <i class="fa-solid fa-link me-2"></i></a></h5>
-                            </div>
-                            <span class="ios-tag mt-2 mt-md-0">2019 – 2026</span>
+<!-- ============ WORK ============ -->
+<section id="work" class="section-pad">
+    <div class="container">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow"><span class="en">Selected work</span><span class="fr">Réalisations</span></span>
+            <h2 class="display-section ios-text mb-3">
+                <span class="en">Proven in production.<br>Building what's next.</span>
+                <span class="fr">Éprouvé en production.<br>Et déjà la suite.</span>
+            </h2>
+            <p class="lead-xl mb-0">
+                <span class="en">A health SaaS platform in production for twelve years, and two new products currently being built end to end with the AI workflow.</span>
+                <span class="fr">Une plateforme SaaS santé en production depuis douze ans, et deux nouveaux produits en cours de développement de bout en bout avec le workflow IA.</span>
+            </p>
+        </div>
+
+        <!-- Andaman7 -->
+        <article class="case case-a7 shadow" data-aos="fade-up">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-6 case-body">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <img class="case-icon" src="resources/work/icon-andaman7.png" alt="Andaman7 icon">
+                        <span class="case-meta"><span class="en">Health SaaS · 2014 – 2026</span><span class="fr">SaaS santé · 2014 – 2026</span></span>
+                    </div>
+                    <h3 class="mb-3">Andaman7</h3>
+                    <p class="case-sub mb-4">
+                        <span class="en">A health-data SaaS platform: patients gather their medical records in one app, share them securely with doctors and family, and take part in international clinical trials. The platform serves partners through white-label apps built from the same codebase.</span>
+                        <span class="fr">Une plateforme SaaS de données de santé : les patients rassemblent leur dossier médical dans une app, le partagent en toute sécurité avec médecins et proches, et participent à des essais cliniques internationaux. La plateforme sert ses partenaires via des apps en marque blanche issues de la même base de code.</span>
+                    </p>
+                    <ul class="case-list">
+                        <li><i class="fa-solid fa-layer-group"></i><span class="en">White-label apps for partners from a single codebase</span><span class="fr">Apps en marque blanche pour les partenaires, une seule base de code</span></li>
+                        <li><i class="fa-solid fa-shield-heart"></i><span class="en">End-to-end secure synchronization of medical data</span><span class="fr">Synchronisation sécurisée de bout en bout des données médicales</span></li>
+                        <li><i class="fa-solid fa-diagram-project"></i><span class="en">Interoperability with hospitals and research partners</span><span class="fr">Interopérabilité avec les hôpitaux et partenaires de recherche</span></li>
+                        <li><i class="fa-solid fa-arrows-rotate"></i><span class="en">Gradual Objective-C to modular Swift migration, no rewrite</span><span class="fr">Migration progressive d'Objective-C vers Swift modulaire, sans réécriture</span></li>
+                    </ul>
+                    <div class="mb-4"><span class="chip">Swift</span><span class="chip">UIKit</span><span class="chip">Core Data</span><span class="chip">Java Spring</span><span class="chip">FHIR</span></div>
+                    <a class="link-arrow" href="https://www.andaman7.com" target="_blank" rel="noopener">andaman7.com <i class="fa-solid fa-arrow-right ms-1"></i></a>
+
+                    <div class="row a7-kpis mt-4 pt-4 g-3">
+                        <div class="col-4"><div class="v">12</div><div class="l"><span class="en">years in production</span><span class="fr">ans en production</span></div></div>
+                        <div class="col-4"><div class="v">iOS</div><div class="l"><span class="en">lead, then Tech Lead</span><span class="fr">lead, puis Tech Lead</span></div></div>
+                        <div class="col-4"><div class="v">iPhone<span style="font-weight:400">+</span><wbr>iPad</div><div class="l"><span class="en">universal app</span><span class="fr">app universelle</span></div></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-4 p-lg-5">
+                    <div class="case-phones three">
+                        <img class="device-raw" data-speed="0.06" src="resources/work/a7-timeline.webp" alt="Andaman7 medical timeline" loading="lazy">
+                        <img class="device-raw offset" data-speed="0.14" src="resources/work/a7-meds.webp" alt="Andaman7 medications" loading="lazy">
+                        <img class="device-raw" data-speed="0.03" src="resources/work/a7-documents.webp" alt="Andaman7 documents" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <div class="row g-4">
+            <!-- Cheese@home -->
+            <div class="col-lg-6" data-aos="fade-up">
+                <article class="case case-cheese h-100 mb-0 shadow-sm">
+                    <div class="case-body pb-0">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <img class="case-icon" src="resources/work/icon-cheese.png" alt="Cheese@home icon">
+                            <span class="case-meta"><span class="en">In progress · Consumer app</span><span class="fr">En cours · App grand public</span></span>
                         </div>
-                        <ul class="ios-list">
-                            <li class="en"><strong>Technical Strategy:</strong> Defined and executed the technical roadmap across mobile and backend components, ensuring high scalability and reliability.</li>
-                            <li class="en"><strong>Project Leadership:</strong> Coordinated development efforts and prioritized technical tasks to deliver high-quality features in real-world healthcare environments.</li>
-                            <li class="en"><strong>Engineering Standards:</strong> Led technical discussions and code reviews to maintain high engineering standards and long-term maintainability.</li>
-                            <li class="en"><strong>Process Improvement:</strong> Enhanced internal development practices, tooling, and release processes for the engineering team.</li>
-
-                            <li class="fr"><strong>Stratégie technique :</strong> Définition et exécution de la roadmap technique sur les composants mobiles et backend, garantissant scalabilité et fiabilité.</li>
-                            <li class="fr"><strong>Leadership de projet :</strong> Coordination des efforts de développement et priorisation des tâches techniques pour livrer des fonctionnalités de haute qualité.</li>
-                            <li class="fr"><strong>Standards d'ingénierie :</strong> Animation des discussions techniques et revues de code pour assurer la maintenabilité à long terme et l'excellence technique.</li>
-                            <li class="fr"><strong>Amélioration des processus :</strong> Optimisation des pratiques de développement internes, de l'outillage et des processus de mise en production (release).</li>
+                        <h3 class="mb-3" style="color:#3b2a1e">Cheese@home</h3>
+                        <p class="case-sub mb-4">
+                            <span class="en">A companion for making real cheese at home: 40+ guided recipes with variants, smart timers that survive closing the app, and a cellar that looks after cheeses while they age, synced through iCloud. Being built end to end with the AI workflow, from mockups to marketing site.</span>
+                            <span class="fr">Un compagnon pour faire du vrai fromage à la maison : plus de 40 recettes guidées avec variantes, des minuteurs intelligents qui survivent à la fermeture de l'app, et une cave qui veille sur les fromages pendant l'affinage, synchronisée via iCloud. En cours de construction de bout en bout avec le workflow IA, des maquettes au site vitrine.</span>
+                        </p>
+                        <ul class="case-list">
+                            <li><i class="fa-solid fa-stopwatch"></i><span class="en">Lock Screen countdown, home-screen widget and real alarms (AlarmKit)</span><span class="fr">Compte à rebours sur l'écran verrouillé, widget et vraies alarmes (AlarmKit)</span></li>
+                            <li><i class="fa-solid fa-cloud"></i><span class="en">iCloud sync (CloudKit), one-time premium unlock (StoreKit 2)</span><span class="fr">Synchronisation iCloud (CloudKit), achat premium unique (StoreKit 2)</span></li>
+                            <li><i class="fa-solid fa-language"></i><span class="en">App and website in 7 languages, iPhone Duo ready</span><span class="fr">App et site en 7 langues, prête pour l'iPhone Duo</span></li>
                         </ul>
+                        <div class="mb-4"><span class="chip">SwiftUI</span><span class="chip">Liquid Glass</span><span class="chip">Clean Architecture</span><span class="chip">Swift Testing</span></div>
+                        <a class="link-arrow" href="https://cheeseathome.web.app" target="_blank" rel="noopener">cheeseathome.web.app <i class="fa-solid fa-arrow-right ms-1"></i></a>
                     </div>
-                </div>
+                    <div class="case-phones mt-5" style="margin-bottom:-18%;">
+                        <img class="device-raw" data-speed="0.04" src="resources/work/cheese-timer.webp" alt="Cheese@home cooking timer" loading="lazy">
+                        <img class="device-raw offset" data-speed="0.1" src="resources/work/cheese-cellar.webp" alt="Cheese@home cellar" loading="lazy">
+                    </div>
+                </article>
+            </div>
 
-                <!-- Role 2: Senior iOS -->
-                <div class="col-12 col-lg-10" data-aos="fade-up">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5">
-                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row mb-4">
-                            <div>
-                                <h4 class="fw-bold ios-text mb-1">
-                                    <span class="en">Senior iOS Engineer</span><span class="fr">Ingénieur iOS Senior</span>
-                                </h4>
-                                <h5 class="ios-blue fw-semibold"><a href="https://www.andaman7.com">Andaman7 <i class="fa-solid fa-link me-2"></i></a></h5>
-                            </div>
-                            <span class="ios-tag mt-2 mt-md-0">2014 – 2026</span>
+            <!-- Circuit Court -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <article class="case case-circuit h-100 mb-0 shadow-sm">
+                    <div class="case-body pb-0">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <img class="case-icon" src="resources/work/icon-circuit.png" alt="Circuit Court icon">
+                            <span class="case-meta"><span class="en">In progress · B2G SaaS</span><span class="fr">En cours · SaaS B2G</span></span>
                         </div>
-                        <ul class="ios-list">
-                            <li class="en"><strong>Architecture:</strong> Designed and maintained the flagship iOS application using Swift, UIKit, and modern patterns (MVVM, modular architecture).</li>
-                            <li class="en"><strong>Interoperability:</strong> Integrated healthcare standards such as FHIR and managed secure medical data exchange for global clinical trials.</li>
-                            <li class="en"><strong>Core Systems:</strong> Implemented robust networking layers and secure synchronization engines for medical data with backend services.</li>
-                            <li class="en"><strong>Optimization:</strong> Focused on performance tuning, debugging production apps, and maintaining a robust, secure Objective-C/Swift codebase.</li>
-
-                            <li class="fr"><strong>Architecture :</strong> Conception et maintenance de l'application iOS phare en utilisant Swift, UIKit et des patterns modernes (MVVM, architecture modulaire).</li>
-                            <li class="fr"><strong>Interopérabilité :</strong> Intégration des standards de santé tels que FHIR et gestion de l'échange sécurisé de données médicales.</li>
-                            <li class="fr"><strong>Systèmes cœurs :</strong> Implémentation de couches réseau robustes et de moteurs de synchronisation sécurisés pour les données médicales.</li>
-                            <li class="fr"><strong>Optimisation :</strong> Focus sur l'optimisation des performances, le débogage d'applications en production et la maintenance d'une base de code Objective-C/Swift sécurisée.</li>
+                        <h3 class="mb-3" style="color:#16301f">Circuit Court</h3>
+                        <p class="case-sub mb-4">
+                            <span class="en">A civic loyalty SaaS designed to be funded by municipalities. Residents complete local quests, earn points and spend them at independent shops. Product model designed for a bounded budget and no e-money regulation; iOS app and website in development.</span>
+                            <span class="fr">Un SaaS de fidélité citoyenne conçu pour être financé par les communes. Les habitants réalisent des quêtes locales, gagnent des points et les dépensent chez les commerçants indépendants. Modèle produit conçu pour un budget maîtrisé et hors réglementation monnaie électronique ; app iOS et site web en cours de développement.</span>
+                        </p>
+                        <ul class="case-list">
+                            <li><i class="fa-solid fa-lightbulb"></i><span class="en">Product strategy and B2G business model</span><span class="fr">Stratégie produit et modèle B2G</span></li>
+                            <li><i class="fa-solid fa-map-location-dot"></i><span class="en">Map-based discovery, quests and QR validation</span><span class="fr">Découverte sur carte, quêtes et validation par QR</span></li>
+                            <li><i class="fa-solid fa-building-columns"></i><span class="en">Rules configurable per municipality, multi-tenant by design</span><span class="fr">Règles configurables par commune, multi-clients par conception</span></li>
                         </ul>
+                        <div class="mb-4"><span class="chip">SwiftUI</span><span class="chip">MapKit</span><span class="chip">SaaS</span><span class="chip">Web</span></div>
+                        <a class="link-arrow" href="https://circuit-court.web.app" target="_blank" rel="noopener">circuit-court.web.app <i class="fa-solid fa-arrow-right ms-1"></i></a>
                     </div>
+                    <div class="case-phones mt-5" style="margin-bottom:-18%;">
+                        <img class="device-raw" data-speed="0.04" src="resources/work/cc-merchant.webp" alt="Circuit Court merchant" loading="lazy">
+                        <img class="device-raw offset" data-speed="0.1" src="resources/work/cc-rewards.webp" alt="Circuit Court rewards" loading="lazy">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ AI (dark) ============ -->
+<section id="ai" class="dark-section section-pad">
+    <div class="dark-glow"></div>
+    <div class="container position-relative">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow"><span class="en">Why it costs less</span><span class="fr">Pourquoi c'est moins cher</span></span>
+            <h2 class="display-section mb-3">
+                <span class="en"><span class="text-grad-dark">AI-accelerated.</span><br>Senior-reviewed.</span>
+                <span class="fr"><span class="text-grad-dark">Accéléré par l'IA.</span><br>Validé par un senior.</span>
+            </h2>
+            <p class="lead-xl mb-0">
+                <span class="en">AI now handles the repetitive part of software work: scaffolding, boilerplate, tests, translations, store assets, documentation. <strong>Architecture, security, UX and the final review stay in expert hands.</strong></span>
+                <span class="fr">L'IA prend désormais en charge la partie répétitive du développement : structure de projet, code répétitif, tests, traductions, visuels des stores, documentation. <strong>L'architecture, la sécurité, l'UX et la validation finale restent entre des mains expertes.</strong></span>
+            </p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="benefit">
+                    <div class="big text-grad-dark"><span class="en">Faster</span><span class="fr">Plus vite</span></div>
+                    <p><span class="en">An MVP in weeks, not quarters. Work that used to fill whole sprints now takes hours.</span><span class="fr">Un MVP en semaines, pas en trimestres. Ce qui remplissait des sprints entiers prend maintenant quelques heures.</span></p>
                 </div>
-
-                <!-- Role 3: Manex -->
-                <div class="col-12 col-lg-10" data-aos="fade-up">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5">
-                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row mb-4">
-                            <div>
-                                <h4 class="fw-bold ios-text mb-1">
-                                    <span class="en">iOS Engineer</span><span class="fr">Ingénieur iOS</span>
-                                </h4>
-                                <h5 class="ios-blue fw-semibold">Manex</h5>
-                            </div>
-                            <span class="ios-tag mt-2 mt-md-0">2014 – 2014</span>
-                        </div>
-                        <ul class="ios-list mb-0">
-                            <li class="en">Developed early iOS prototypes for the Andaman7 medical platform.</li>
-                            <li class="en">Implemented core iPad functionality for managing occupational health records.</li>
-
-                            <li class="fr">Développement des premiers prototypes iOS pour la plateforme médicale Andaman7.</li>
-                            <li class="fr">Implémentation des fonctionnalités clés sur iPad pour la gestion des dossiers de santé au travail.</li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="benefit">
+                    <div class="big text-grad-dark"><span class="en">Leaner</span><span class="fr">Moins cher</span></div>
+                    <p><span class="en">Fewer billable hours spent typing, more spent deciding. The budget goes to expertise, not boilerplate.</span><span class="fr">Moins d'heures facturées à taper du code, plus à décider. Le budget va à l'expertise, pas au code répétitif.</span></p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="benefit">
+                    <div class="big text-grad-dark"><span class="en">Solid</span><span class="fr">Solide</span></div>
+                    <p><span class="en">Every change reviewed, tested and documented, so the codebase stays maintainable by any team, human or AI.</span><span class="fr">Chaque changement relu, testé et documenté, pour un code maintenable par n'importe quelle équipe, humaine ou IA.</span></p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="expertise" class="py-5 section-padding">
-        <div class="container">
-            <h3 class="fw-bold fs-2 ios-text mb-5 text-center" data-aos="fade-up"><span class="en">Expertise</span><span class="fr">Expertise</span></h3>
-
-            <div class="row g-4">
-                <!-- Stack (Swift Custom Gradient) -->
-                <div class="col-md-6" data-aos="zoom-in">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
-                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-brands fa-swift me-2 fs-3"></i> iOS Stack</h5>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="ios-pill">Swift</span><span class="ios-pill">SwiftUI</span><span class="ios-pill">UIKit</span>
-                            <span class="ios-pill">Objective-C</span><span class="ios-pill">Core Data</span><span class="ios-pill">Core Animation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Architecture (iOS Indigo) -->
-                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="50">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
-                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-solid fa-cubes ios-indigo me-2 fs-3"></i> Architecture</h5>
-                        <div class="d-flex flex-wrap gap-2 en">
-                            <span class="ios-pill">MVVM</span><span class="ios-pill">Modular Codebases</span>
-                            <span class="ios-pill">Networking</span><span class="ios-pill">Data Sync</span><span class="ios-pill">Security</span>
-                        </div>
-                        <div class="d-flex flex-wrap gap-2 fr">
-                            <span class="ios-pill">MVVM</span><span class="ios-pill">Architecture Modulaire</span>
-                            <span class="ios-pill">Réseau</span><span class="ios-pill">Sync. de données</span><span class="ios-pill">Sécurité</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Healthcare (iOS Red) -->
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
-                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-solid fa-heart-pulse ios-red me-2 fs-3"></i> <span class="en">Healthcare</span><span class="fr">HealthTech</span></h5>
-                        <div class="d-flex flex-wrap gap-2 en">
-                            <span class="ios-pill">FHIR Standard</span><span class="ios-pill">Secure Data Exchange</span><span class="ios-pill">Data Privacy</span>
-                        </div>
-                        <div class="d-flex flex-wrap gap-2 fr">
-                            <span class="ios-pill">Standard FHIR</span><span class="ios-pill">Échange Sécurisé</span><span class="ios-pill">Confidentialité</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tools (iOS Teal) -->
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
-                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-solid fa-wrench ios-teal me-2 fs-3"></i> <span class="en">Tools</span><span class="fr">Outils</span></h5>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="ios-pill">Xcode</span><span class="ios-pill">REST APIs</span><span class="ios-pill">Git</span>
-                            <span class="ios-pill">CI/CD</span><span class="ios-pill">Performance Debugging</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Leadership (iOS Orange) -->
-                <div class="col-lg-4 col-md-12" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4">
-                        <h5 class="fw-bold ios-text mb-4 d-flex align-items-center"><i class="fa-solid fa-users ios-orange me-2 fs-3"></i> Leadership</h5>
-                        <div class="d-flex flex-wrap gap-2 en">
-                            <span class="ios-pill">Engineering Leadership</span><span class="ios-pill">Technical Project Leadership</span><span class="ios-pill">Code Reviews</span>
-                        </div>
-                        <div class="d-flex flex-wrap gap-2 fr">
-                            <span class="ios-pill">Leadership Technique</span><span class="ios-pill">Leadership de Projet</span><span class="ios-pill">Revues de Code</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Languages (iOS Blue) -->
-                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="250">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4 text-center">
-                        <h6 class="fw-bold ios-text mb-3 fs-5 d-flex justify-content-center align-items-center"><i class="fa-solid fa-language ios-blue me-2 fs-4"></i><span class="en">Languages</span><span class="fr">Langues</span></h6>
-                        <div class="d-flex flex-wrap justify-content-center gap-2">
-                            <span class="ios-pill"><span class="en">French (Native)</span><span class="fr">Français (Maternel)</span></span>
-                            <span class="ios-pill"><span class="en">English (Professional)</span><span class="fr">Anglais (Professionnel)</span></span>
-                            <span class="ios-pill"><span class="en">Dutch (Elementary)</span><span class="fr">Néerlandais (Élémentaire)</span></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Additional Skills (iOS Green) -->
-                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4 text-center">
-                        <h6 class="fw-bold ios-text mb-3 fs-5 d-flex justify-content-center align-items-center"><i class="fa-solid fa-microchip ios-green me-2 fs-4"></i><span class="en">Additional Skills</span><span class="fr">Compétences diverses</span></h6>
-                        <div class="d-flex flex-wrap justify-content-center gap-2">
-                            <span class="ios-pill">Machine Learning</span><span class="ios-pill">Computer Vision</span>
-                            <span class="ios-pill">Java (Spring)</span><span class="ios-pill">Agile/Scrum</span>
-                            <span class="ios-pill en">Technical Mentorship</span><span class="ios-pill fr">Mentorat technique</span>
-                            <span class="ios-pill en">Product Strategy</span><span class="ios-pill fr">Stratégie produit</span>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="split-compare row g-0" data-aos="fade-up">
+            <div class="col-md-6 col-side side-ai">
+                <h4><i class="fa-solid fa-microchip me-2" style="color:#A5A3FF"></i><span class="en">What AI accelerates</span><span class="fr">Ce que l'IA accélère</span></h4>
+                <ul>
+                    <li><i class="fa-solid fa-bolt" style="color:#A5A3FF"></i><span class="en">Scaffolding, models, networking boilerplate</span><span class="fr">Structure de projet, modèles, code réseau</span></li>
+                    <li><i class="fa-solid fa-bolt" style="color:#A5A3FF"></i><span class="en">Unit tests and edge-case coverage</span><span class="fr">Tests unitaires et couverture des cas limites</span></li>
+                    <li><i class="fa-solid fa-bolt" style="color:#A5A3FF"></i><span class="en">Translations, store listings, screenshots</span><span class="fr">Traductions, fiches store, captures d'écran</span></li>
+                    <li><i class="fa-solid fa-bolt" style="color:#A5A3FF"></i><span class="en">Docs, migration scripts, refactors</span><span class="fr">Documentation, scripts de migration, refactorings</span></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-side side-me">
+                <h4><i class="fa-solid fa-user-check me-2" style="color:#64D2FF"></i><span class="en">What stays in expert hands</span><span class="fr">Ce qui reste entre des mains expertes</span></h4>
+                <ul>
+                    <li><i class="fa-solid fa-check" style="color:#64D2FF"></i><span class="en">Product decisions and architecture</span><span class="fr">Décisions produit et architecture</span></li>
+                    <li><i class="fa-solid fa-check" style="color:#64D2FF"></i><span class="en">Security, privacy and sensitive data</span><span class="fr">Sécurité, confidentialité et données sensibles</span></li>
+                    <li><i class="fa-solid fa-check" style="color:#64D2FF"></i><span class="en">UX details and the "feels right" polish</span><span class="fr">Les détails UX et la finition qui fait la différence</span></li>
+                    <li><i class="fa-solid fa-check" style="color:#64D2FF"></i><span class="en">Review and sign-off before anything ships</span><span class="fr">Relecture et validation avant chaque livraison</span></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-5 section-padding mb-5">
-        <div class="container">
-            <h3 class="fw-bold fs-2 ios-text mb-5 text-center" data-aos="fade-up"><span class="en">Education</span><span class="fr">Formation</span></h3>
+<!-- ============ ENGAGEMENT ============ -->
+<section id="engage" class="section-pad">
+    <div class="container">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow"><span class="en">Working together</span><span class="fr">Collaborer</span></span>
+            <h2 class="display-section ios-text mb-3">
+                <span class="en">Pick the shape<br>that fits your stage.</span>
+                <span class="fr">Choisissez la formule<br>adaptée à votre étape.</span>
+            </h2>
+        </div>
 
-            <div class="row g-4 justify-content-center">
-                <!-- Masters Card -->
-                <div class="col-lg-10" data-aos="fade-up">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5 position-relative overflow-hidden">
-
-                        <!-- Watermark Icon fixed with custom CSS class -->
-                        <i class="fa-solid fa-graduation-cap watermark-icon"></i>
-
-                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row mb-3 position-relative z-1">
-                            <div>
-                                <h4 class="fw-bold ios-text mb-1">
-                                    <span class="en">Master's Degree in Computer Science</span>
-                                    <span class="fr">Master en Sciences Informatiques</span>
-                                </h4>
-                                <h5 class="ios-blue fw-semibold">Université de Liège, Belgium</h5>
-                            </div>
-                            <span class="ios-tag mt-2 mt-md-0">2012 – 2014</span>
-                        </div>
-
-                        <div class="mb-3 position-relative z-1">
-                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold shadow-sm">Distinction</span>
-                        </div>
-
-                        <div class="ios-text-secondary position-relative z-1">
-                            <p class="en mb-2"><strong class="ios-text">Major in Management.</strong> Focus: Imagery, Infography, Networking, and High-Performance Computing.</p>
-                            <p class="en mb-0"><strong class="ios-text">Master Thesis:</strong> "Development of a synchronized iPad application for occupational health records." (Served as the technical precursor to the Andaman7 platform).</p>
-
-                            <p class="fr mb-2"><strong class="ios-text">Finalité spécialisée en Gestion.</strong> Options : Imagerie, Infographie, Réseaux et Calcul Haute Performance.</p>
-                            <p class="fr mb-0"><strong class="ios-text">Mémoire de fin d'études :</strong> "Développement d'une application iPad synchronisée pour les dossiers de santé au travail" (précurseur technique de la plateforme Andaman7).</p>
-                        </div>
-                    </div>
+                <p class="swipe-hint"><span class="en">Swipe to see more</span><span class="fr">Glissez pour voir la suite</span> <i class="fa-solid fa-arrow-right"></i></p>
+        <div class="row g-4 snap-row">
+            <div class="col-lg-4" data-aos="fade-up">
+                <div class="ios-card ios-glass lift shadow-sm plan">
+                    <span class="plan-tag"><span class="en">For founders & new products</span><span class="fr">Pour fondateurs & nouveaux produits</span></span>
+                    <h3 class="ios-text mt-1"><span class="en">MVP Launch</span><span class="fr">Lancement MVP</span></h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i><span class="en">Stages 1 to 8: from mockups to store release</span><span class="fr">Étapes 1 à 8 : des maquettes à la publication</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">Fixed scope and price, agreed upfront</span><span class="fr">Périmètre et prix fixes, convenus à l'avance</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">App, backend and marketing site</span><span class="fr">App, backend et site vitrine</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">Test builds to try the app as it grows</span><span class="fr">Versions de test pour essayer l'app au fil du projet</span></li>
+                    </ul>
+                    <a href="#contact" class="btn btn-ios-secondary rounded-pill fw-semibold py-2"><span class="en">Plan an MVP</span><span class="fr">Planifier un MVP</span></a>
                 </div>
-
-                <!-- Bachelors Card -->
-                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
-                    <div class="ios-card ios-glass shadow-sm h-100 p-4 p-md-5 position-relative overflow-hidden">
-
-                        <!-- Added Watermark Icon to second card -->
-                        <i class="fa-solid fa-graduation-cap watermark-icon"></i>
-
-                        <div class="d-flex justify-content-between align-items-start flex-column flex-md-row position-relative z-1">
-                            <div>
-                                <h4 class="fw-bold ios-text mb-1">
-                                    <span class="en">Bachelor's Degree in Computer Science</span>
-                                    <span class="fr">Bachelier en Sciences Informatiques</span>
-                                </h4>
-                                <h5 class="ios-blue fw-semibold mb-0">Université de Liège, Belgium</h5>
-                            </div>
-                            <span class="ios-tag mt-2 mt-md-0">2009 – 2012</span>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="ios-card ios-glass lift shadow-sm plan featured">
+                    <span class="ribbon"><span class="en">Recommended</span><span class="fr">Recommandé</span></span>
+                    <span class="plan-tag"><span class="en">For growing SaaS products</span><span class="fr">Pour les SaaS en croissance</span></span>
+                    <h3 class="ios-text mt-1"><span class="en">Product Partner</span><span class="fr">Partenaire Produit</span></h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i><span class="en">Monthly retainer with dedicated capacity</span><span class="fr">Forfait mensuel, capacité dédiée</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">New features, maintenance and OS upgrades</span><span class="fr">Nouvelles fonctionnalités, maintenance, mises à jour OS</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">Roadmap input and release management</span><span class="fr">Contribution à la roadmap, gestion des releases</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">Android covered with the partner</span><span class="fr">Android couvert avec le partenaire</span></li>
+                    </ul>
+                    <a href="#contact" class="btn btn-ios-primary rounded-pill fw-semibold py-2"><span class="en">Let's talk</span><span class="fr">Parlons-en</span></a>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="ios-card ios-glass lift shadow-sm plan">
+                    <span class="plan-tag"><span class="en">For teams with an existing app</span><span class="fr">Pour les équipes avec une app existante</span></span>
+                    <h3 class="ios-text mt-1"><span class="en">Existing app</span><span class="fr">App existante</span></h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i><span class="en">New features on an existing codebase</span><span class="fr">Nouvelles fonctionnalités sur une base de code existante</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">Legacy rescue and modernization</span><span class="fr">Reprise et modernisation de code legacy</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">AI tooling brought into the team's workflow</span><span class="fr">Outils IA intégrés au workflow de l'équipe</span></li>
+                        <li><i class="fa-solid fa-check"></i><span class="en">Part-time Tech Lead or mentoring</span><span class="fr">Tech Lead à temps partiel ou mentorat</span></li>
+                    </ul>
+                    <a href="#contact" class="btn btn-ios-secondary rounded-pill fw-semibold py-2"><span class="en">Discuss your app</span><span class="fr">Parler de votre app</span></a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="py-5 text-center mt-5">
-        <div class="container">
-            <p class="mb-0 ios-text-secondary small fw-medium"><img class="text-icon" src="resources/coreon_logo_light.svg" alt="logo"/> <script>document.write(new Date().getFullYear())</script> Sébastien Hannay. <span class="en">Designed in Belgium.</span><span class="fr">Conçu en Belgique.</span></p>
+<!-- ============ ABOUT ============ -->
+<section id="about" class="section-pad pt-0">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5 text-center" data-aos="zoom-in">
+                <img src="resources/profile.jpg" alt="Sébastien Hannay" class="profile-squircle" data-speed="0.05">
+            </div>
+            <div class="col-lg-7" data-aos="fade-up">
+                <span class="eyebrow"><span class="en">Behind the work</span><span class="fr">Derrière le travail</span></span>
+                <h2 class="display-section ios-text mb-2" style="font-size: clamp(2rem, 4.5vw, 3.2rem);">Sébastien Hannay</h2>
+                <p class="fw-semibold ios-text-secondary mb-4"><span class="en">Senior iOS engineer & tech lead · Liège, Belgium · Remote across Europe</span><span class="fr">Ingénieur iOS senior & tech lead · Liège, Belgique · Remote dans toute l'Europe</span></p>
+                <p class="lead-xl mb-4">
+                    <span class="en">Twelve years building and leading a health SaaS platform used in clinical trials, now available to help SaaS companies, startups and health players ship mobile products with healthcare-grade rigor and modern AI speed.</span>
+                    <span class="fr">Douze ans à construire et diriger une plateforme SaaS santé utilisée en essais cliniques, désormais disponible pour aider éditeurs SaaS, startups et acteurs de la santé à livrer leurs produits mobiles, avec la rigueur du médical et la vitesse des outils IA modernes.</span>
+                </p>
+
+                <ul class="timeline mb-4">
+                    <li class="now">
+                        <div class="when"><span class="en">2026 · NOW</span><span class="fr">2026 · AUJOURD'HUI</span></div>
+                        <div class="what"><span class="en">Freelance mobile product engineer</span><span class="fr">Ingénieur produit mobile freelance</span></div>
+                        <div class="where">Cheese@home, Circuit Court, <span class="en">and your project?</span><span class="fr">et votre projet ?</span></div>
+                    </li>
+                    <li>
+                        <div class="when">2019 – 2026</div>
+                        <div class="what">Tech Lead · Andaman7</div>
+                        <div class="where"><span class="en">Mobile & backend roadmap, code review, release processes</span><span class="fr">Roadmap mobile & backend, revues de code, processus de release</span></div>
+                    </li>
+                    <li>
+                        <div class="when">2014 – 2026</div>
+                        <div class="what"><span class="en">Senior iOS Engineer · Andaman7</span><span class="fr">Ingénieur iOS Senior · Andaman7</span></div>
+                        <div class="where"><span class="en">Flagship iOS app, secure medical data sync, white-label</span><span class="fr">App iOS phare, synchronisation sécurisée de données médicales, marque blanche</span></div>
+                    </li>
+                </ul>
+
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                    <a href="cv.html" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-semibold"><i class="fa-regular fa-file-lines me-2"></i><span class="en">Full résumé</span><span class="fr">CV complet</span></a>
+                    <span class="ios-text-secondary small fw-medium"><i class="fa-solid fa-language me-1"></i> <span class="en">French · English</span><span class="fr">Français · Anglais</span></span>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <!-- Bootstrap & AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/portfolio.js"></script>
+<!-- ============ FAQ ============ -->
+<section id="faq" class="section-pad pt-0">
+    <div class="container" style="max-width: 860px;">
+        <div class="section-head mb-4" data-aos="fade-up">
+            <h2 class="display-section ios-text" style="font-size: clamp(2rem, 4.5vw, 3rem);"><span class="en">Questions, answered.</span><span class="fr">Vos questions, nos réponses.</span></h2>
+        </div>
+        <div class="accordion faq" id="faqAcc" data-aos="fade-up">
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1"><span class="en">Is AI-written code actually maintainable?</span><span class="fr">Le code écrit avec l'IA est-il vraiment maintenable ?</span></button></h3>
+                <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">
+                    <span class="en">Yes, because AI works inside strict guardrails: a clear layered architecture, written project rules, automated tests and a human review of every change. The result is a codebase any senior developer can pick up, and that AI tools can keep extending safely.</span>
+                    <span class="fr">Oui, parce que l'IA travaille dans un cadre strict : architecture en couches claire, règles de projet écrites, tests automatisés et relecture humaine de chaque changement. Le résultat : un code qu'un développeur senior reprend facilement et que les outils IA peuvent continuer à faire évoluer sans risque.</span>
+                </div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2"><span class="en">How are security and GDPR handled?</span><span class="fr">Comment la sécurité et le RGPD sont-ils gérés ?</span></button></h3>
+                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">
+                    <span class="en">From the architecture stage: encryption in transit and at rest, secure authentication, role-based access, data minimization, consent and deletion flows, checked against OWASP mobile guidelines. Real personal or health data never goes into AI tools; they work on code and synthetic data only.</span>
+                    <span class="fr">Dès l'étape d'architecture : chiffrement en transit et au repos, authentification sécurisée, accès par rôles, minimisation des données, parcours de consentement et de suppression, vérifiés selon les recommandations OWASP mobile. Les vraies données personnelles ou de santé ne passent jamais par les outils IA ; ils travaillent uniquement sur le code et des données fictives.</span>
+                </div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3"><span class="en">Can you deliver Android as well?</span><span class="fr">Android est-il aussi possible ?</span></button></h3>
+                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">
+                    <span class="en">Yes. Native Android is built by a trusted partner with a similar background. Both apps share the architecture and the backend, and releases are planned together so they evolve in step and stay consistent.</span>
+                    <span class="fr">Oui. L'Android natif est réalisé par un partenaire de confiance au profil similaire. Les deux apps partagent l'architecture et le backend, et les releases sont planifiées ensemble pour qu'elles évoluent au même rythme et restent cohérentes.</span>
+                </div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4"><span class="en">Who owns the code?</span><span class="fr">À qui appartient le code ?</span></button></h3>
+                <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">
+                    <span class="en">You do, from day one. Repository, App Store and Play Store accounts, cloud projects and intellectual property are all in your name. No lock-in.</span>
+                    <span class="fr">Vous, dès le premier jour. Dépôt de code, comptes App Store et Play Store, projets cloud et propriété intellectuelle sont à votre nom. Aucune dépendance.</span>
+                </div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q5"><span class="en">Can an existing app be taken over?</span><span class="fr">Une app existante peut-elle être reprise ?</span></button></h3>
+                <div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">
+                    <span class="en">Absolutely. Large Objective-C/Swift codebases can be taken over and modernized step by step, without stopping delivery.</span>
+                    <span class="fr">Bien sûr. Une large base de code Objective-C/Swift peut être reprise et modernisée pas à pas, sans interrompre les livraisons.</span>
+                </div></div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="section-pad pt-0">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="display-hero ios-text mb-3" style="font-size: clamp(2.4rem, 6vw, 4.4rem);">
+                <span class="en">Let's build<br><span class="text-grad">your app.</span></span>
+                <span class="fr">Construisons<br><span class="text-grad">votre app.</span></span>
+            </h2>
+            <p class="lead-xl mx-auto" style="max-width: 640px;">
+                <span class="en">Describe your project in a few lines. You'll get a reply within one business day with first thoughts and next steps. No commitment.</span>
+                <span class="fr">Décrivez votre projet en quelques lignes. Réponse sous un jour ouvré avec un premier avis et les prochaines étapes. Sans engagement.</span>
+            </p>
+        </div>
+
+        <div class="ios-card ios-glass shadow contact-card" data-aos="fade-up">
+            <div class="row g-5">
+                <div class="col-lg-7">
+                    <form id="brief" novalidate>
+                        <div class="mb-4">
+                            <span class="brief-label"><span class="en">What do you need?</span><span class="fr">De quoi avez-vous besoin ?</span></span>
+                            <input type="checkbox" class="btn-check" id="n-ios" value="iOS app" data-fr="App iOS" checked><label class="toggle-chip" for="n-ios"><i class="fa-brands fa-apple"></i> <span class="en">iOS app</span><span class="fr">App iOS</span></label>
+                            <input type="checkbox" class="btn-check" id="n-android" value="Android app" data-fr="App Android"><label class="toggle-chip" for="n-android"><i class="fa-brands fa-android"></i> <span class="en">Android app</span><span class="fr">App Android</span></label>
+                            <input type="checkbox" class="btn-check" id="n-design" value="UX/UI design" data-fr="Design UX/UI"><label class="toggle-chip" for="n-design"><i class="fa-solid fa-pen-ruler"></i> <span class="en">UX/UI design</span><span class="fr">Design UX/UI</span></label>
+                            <input type="checkbox" class="btn-check" id="n-back" value="Backend / API" data-fr="Backend / API"><label class="toggle-chip" for="n-back"><i class="fa-solid fa-server"></i> Backend / API</label>
+                            <input type="checkbox" class="btn-check" id="n-web" value="Website" data-fr="Site web"><label class="toggle-chip" for="n-web"><i class="fa-solid fa-globe"></i> <span class="en">Website</span><span class="fr">Site web</span></label>
+                            <input type="checkbox" class="btn-check" id="n-audit" value="Tech lead" data-fr="Tech lead"><label class="toggle-chip" for="n-audit"><i class="fa-solid fa-compass-drafting"></i> Tech lead</label>
+                        </div>
+                        <div class="mb-4">
+                            <span class="brief-label"><span class="en">Where are you at?</span><span class="fr">Où en êtes-vous ?</span></span>
+                            <input type="radio" class="btn-check" name="stage" id="s-idea" value="Just an idea" data-fr="Juste une idée" checked><label class="toggle-chip" for="s-idea"><span class="en">Just an idea</span><span class="fr">Juste une idée</span></label>
+                            <input type="radio" class="btn-check" name="stage" id="s-design" value="Specs / designs ready" data-fr="Specs / maquettes prêtes"><label class="toggle-chip" for="s-design"><span class="en">Specs / designs ready</span><span class="fr">Specs / maquettes prêtes</span></label>
+                            <input type="radio" class="btn-check" name="stage" id="s-live" value="Existing app" data-fr="App existante"><label class="toggle-chip" for="s-live"><span class="en">Existing app</span><span class="fr">App existante</span></label>
+                        </div>
+                                                <div class="mb-4">
+                            <label class="brief-label" for="b-msg"><span class="en">Tell us about it</span><span class="fr">Décrivez votre projet</span></label>
+                            <textarea id="b-msg" class="form-control ios-input" rows="4" data-ph-en="What are you building, for whom, and by when?" data-ph-fr="Que construisez-vous, pour qui, et pour quand ?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-ios-primary btn-lg-pill w-100 shadow-sm">
+                            <i class="fa-solid fa-paper-plane me-2"></i><span class="en">Send the brief</span><span class="fr">Envoyer la demande</span>
+                        </button>
+                        <p class="small ios-text-secondary text-center mt-3 mb-0"><span class="en">Opens your email app with the brief pre-filled.</span><span class="fr">Ouvre votre messagerie avec la demande pré-remplie.</span></p>
+                    </form>
+                </div>
+                <div class="col-lg-5">
+                    <span class="brief-label"><span class="en">Or get in touch directly</span><span class="fr">Ou contact direct</span></span>
+                    <a class="direct-link" href="mailto:seb.hannay@gmail.com"><span class="ico"><i class="fa-solid fa-envelope"></i></span>seb.hannay@gmail.com</a>
+                    <a class="direct-link" href="https://linkedin.com/in/sebastienhannay" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-linkedin-in"></i></span>linkedin.com/in/sebastienhannay</a>
+                    <a class="direct-link" href="https://github.com/sebastienhannay" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-github"></i></span>github.com/sebastienhannay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small fw-medium ios-text-secondary">
+        <span><img class="brand-mark" src="resources/coreon_logo_light.svg" alt=""> © <span id="year">2026</span> Sébastien Hannay · <span class="en">Designed & built in Belgium.</span><span class="fr">Conçu et développé en Belgique.</span></span>
+        <span class="d-flex gap-3">
+            <a href="#services">Services</a>
+            <a href="#process"><span class="en">Process</span><span class="fr">Méthode</span></a>
+            <a href="#work"><span class="en">Work</span><span class="fr">Réalisations</span></a>
+            <a href="cv.html"><span class="en">Résumé</span><span class="fr">CV</span></a>
+            <a href="#contact">Contact</a>
+        </span>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/site.js"></script>
 </body>
 </html>

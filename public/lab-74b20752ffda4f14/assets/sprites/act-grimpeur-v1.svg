@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Généré par scripts/export_sprites.py. Éditable à la main :
+     la carte le recharge tel quel. Mais relancer le script écrase
+     ce fichier. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+<path d="M8 96 L8 10 L44 4 L52 40 L44 74 L50 96 Z" fill="#7B8895"/><path d="M8 10 L44 4 L48 24 L8 34 Z" fill="#9EAAB5" opacity="0.7"/><path d="M8 60 L40 52 L44 74 L8 82 Z" fill="#5B6874" opacity="0.45"/><path d="M44 8 L60 92" fill="none" stroke="#E9C46A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 40 q 10 -3 14 8 l 2 14 q -10 4 -18 0 Z" fill="#3C7FB5"/><ellipse cx="64.0" cy="32.0" rx="8.0" ry="8.0" fill="#F0C9A4"/><path d="M55 30 q 9 -11 18 -2 l 1 4 q -10 -6 -19 0 Z" fill="#31404F"/><path d="M60 46 L46 30" fill="none" stroke="#F0C9A4" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M70 46 L78 34" fill="none" stroke="#F0C9A4" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 62 L48 72" fill="none" stroke="#31404F" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M70 62 L74 78" fill="none" stroke="#31404F" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
