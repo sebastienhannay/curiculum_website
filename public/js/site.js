@@ -56,7 +56,10 @@ function initReveal() {
     items.forEach((el) => {
         const delay = parseInt(el.dataset.aosDelay || '0', 10);
         if (delay) el.style.setProperty('--reveal-delay', `${delay}ms`);
-        const target = el.closest('.snap-row') || el;
+        // A swipe row is watched as a whole, unless it's only a layout wrapper
+        // (display: contents, no box of its own): then watch the item itself
+        const row = el.closest('.snap-row');
+        const target = row && getComputedStyle(row).display !== 'contents' ? row : el;
         if (!groups.has(target)) groups.set(target, []);
         groups.get(target).push(el);
     });

@@ -5,6 +5,23 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "predeploy": [
+      "node \"$PROJECT_DIR/tools/version-assets.mjs\" \"$PROJECT_DIR/public\""
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=31536000" }
+        ]
+      },
+      {
+        "source": "/@(css|js|resources)/**",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      }
     ]
   }
 }

@@ -35,6 +35,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
 }
+/* Never let anything widen the page sideways (white band on mobile).
+   `overflow-x: hidden` on body alone doesn't stop mobile Chrome/Safari from
+   growing the layout viewport; `clip` on both html and body does, without
+   turning body into a scroll container. Older browsers keep the line above. */
+@supports (overflow-x: clip) {
+    html, body { overflow-x: clip; }
+}
 
 /* Language switcher core */
 body.lang-en .fr { display: none !important; }
@@ -126,7 +133,8 @@ img { max-width: 100%; }
     font-size: 0.85rem;
 }
 .lang-btn:hover { background: rgba(0, 0, 0, 0.05); }
-@media (max-width: 767px) {
+/* Compact (hamburger) menu up to 991px: the French labels don't fit a full bar at 768px */
+@media (max-width: 991.98px) {
     .custom-nav { border-radius: 24px; }
     .navbar-collapse { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--ios-hairline); }
 }
@@ -608,19 +616,6 @@ footer a:hover { color: var(--ios-text); }
     background: var(--c);
     box-shadow: 0 8px 16px -8px var(--c);
 }
-.included-row {
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-    gap: 0.6rem 1.4rem;
-    padding: 1rem 1.5rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid var(--ios-hairline);
-    font-weight: 600; font-size: 0.9rem;
-}
-.included-row .inc-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ios-text-secondary); }
-.included-row .inc i { margin-right: 0.4rem; }
-@media (max-width: 767px) { .included-row { border-radius: 24px; justify-content: flex-start; } }
-
 /* ---------- Scroll effects ---------- */
 .scroll-progress {
     position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 1100;
@@ -653,22 +648,35 @@ footer a:hover { color: var(--ios-text); }
     .section-head { margin-bottom: 2rem; }
     .hero { padding-top: 120px; }
 
-    /* Horizontal swipe rows (App Store style) instead of long stacks */
+    /* Horizontal swipe rows (App Store style) instead of long stacks.
+       Full-bleed: the row runs edge to edge of the screen whatever the
+       container width (fluid below 576px, 540px wide in landscape), while
+       the first card stays aligned with the text above it.
+       --bleed = distance from the screen edge to the container's content:
+       12px when the container is fluid (< 576px), (100vw - 516px) / 2 from
+       576px, where Bootstrap's container becomes 540px wide. */
     .snap-row {
+        --bleed: 12px;
+        display: flex;
         flex-wrap: nowrap;
+        gap: 1rem;
         overflow-x: auto;
+        overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
-        scroll-padding-left: 1rem;
-        margin-left: -12px; margin-right: -12px;
-        padding: 0.5rem 0.25rem 1.25rem;
+        scroll-padding-inline: var(--bleed);
+        margin-inline: calc(-1 * var(--bleed));
+        padding: 0.5rem var(--bleed) 1.25rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
     }
     .snap-row::-webkit-scrollbar { display: none; }
-    .snap-row > * { flex: 0 0 84%; max-width: 84%; scroll-snap-align: start; }
+    @media (min-width: 576px) { .snap-row { --bleed: calc(50vw - 258px); } }
+    .snap-row > * {
+        flex: 0 0 min(84%, 360px);
+        scroll-snap-align: start;
+        transform: translateZ(0); /* pre-render off-screen cards: no blank tiles while swiping */
+    }
     .snap-row .ios-card.lift:hover { transform: none; }
-    /* Pre-render the off-screen cards so swiping doesn't show blank tiles */
-    .snap-row > * { transform: translateZ(0); }
     .swipe-hint {
         display: block;
         text-align: right;
@@ -713,4 +721,158 @@ footer a:hover { color: var(--ios-text); }
 .js [data-aos].in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
     .js [data-aos] { opacity: 1; transform: none; transition: none; }
+}
+
+/* =========================================================================
+   Bento grids: Services, Process, Offers
+   Patchwork of tiles of different sizes that always interlocks without
+   holes. Below 768px the same containers become swipe rows (.snap-row).
+   ========================================================================= */
+/* Grid from 768px up; below that .snap-row turns the same container into a swipe row */
+@media (min-width: 768px) {
+    .bento { display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr); }
+}
+.bento > * > .ios-card { height: 100%; }
+
+/* ---- Services ----
+   tablet (2 cols)            desktop (3 cols)
+   [ SaaS ········· ]         [ SaaS ········· ][ iOS ]
+   [ iOS ][ Backend ]         [ Backend ][ Web ][ iOS ]
+   [ iOS ][ Web     ]         [ Health ][ Existing ···· ]
+   [ Health ][ Existing ]                                  */
+@media (min-width: 768px) {
+    .bento-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bento-services > .b-wide { grid-column: span 2; }
+    .bento-services > .b-tall { grid-row: span 2; }
+}
+@media (min-width: 992px) {
+    .bento-services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .bento-services > .b-wide-lg { grid-column: span 2; }
+    .bento-services > .b-wide-lg p { max-width: 58ch; }
+}
+
+/* Tile styles: a few tinted / dark tiles give the patchwork its rhythm */
+.service-card.card-warm,
+.service-card.card-rose,
+.service-card.card-dark { display: flex; flex-direction: column; }
+.bento .card-warm { background: linear-gradient(165deg, #FFF1E6 0%, rgba(255, 255, 255, 0.92) 62%); }
+.bento .card-rose { background: linear-gradient(165deg, #FFEAF0 0%, rgba(255, 255, 255, 0.92) 62%); }
+.bento .card-dark {
+    background: radial-gradient(120% 100% at 100% 0%, #3A3A3C 0%, #1C1C1E 55%, #0F0F10 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+.card-dark .ios-text { color: #F5F5F7 !important; }
+.card-dark p { color: rgba(245, 245, 247, 0.72); }
+.card-dark .chip { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.14); color: #F5F5F7; }
+.card-watermark {
+    position: absolute; right: -1.75rem; bottom: -2.75rem;
+    font-size: 7.5rem; line-height: 1;
+    color: #fff; opacity: 0.06;
+    transform: rotate(-12deg);
+    pointer-events: none;
+}
+.card-dark > :not(.card-watermark) { position: relative; z-index: 1; }
+
+/* Tall iOS tile: a phone peeks from the bottom and fills whatever height
+   the grid gives the tile (it adds no height of its own beyond a minimum) */
+.tile-peek { display: none; }
+@media (min-width: 768px) {
+    .tile-peek {
+        display: block;
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 190px;
+        margin: 1.5rem -2rem -2rem;
+        overflow: hidden;
+    }
+    .tile-peek .shot {
+        position: absolute;
+        top: 0; left: 50%;
+        width: min(62%, 240px);
+        transform: translateX(-50%);
+    }
+}
+
+/* ---- Process ----
+   The 9 steps are identical tiles (no step looks more important); the
+   patchwork comes from the "Always included" tile, which isn't a step.
+   4 cols:  [01][02][03][INC]      3 cols:  [01][02][INC]      2 cols:  [01][02]
+            [04][05][06][INC]               [03][04][INC]               ...
+            [07][08][09][INC]               [05][06][INC]               [09][INC]
+                                            [07][08][09]
+   On phones the steps are a swipe row and the tile sits below it.
+   From 768px the swipe-row wrapper uses display: contents, so the steps
+   and the tile share one grid. */
+.bento-process { gap: 1rem; }
+.bento-process .process-card::after {
+    content: attr(data-num);
+    position: absolute;
+    right: 1rem; bottom: -1.7rem;
+    font-size: 6.5rem; font-weight: 800; letter-spacing: -0.06em; line-height: 1;
+    color: var(--c);
+    opacity: 0.09;
+    pointer-events: none;
+}
+.bento-process .process-card > * { position: relative; z-index: 1; }
+
+.included-tile {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.25rem;
+    padding: 2rem;
+    border-radius: 28px;
+    color: #F5F5F7;
+    background: radial-gradient(120% 90% at 100% 0%, #3A3A3C 0%, #1C1C1E 55%, #0F0F10 100%);
+    box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.45);
+}
+.included-tile > :not(.included-watermark) { position: relative; z-index: 1; }
+.included-tile .eyebrow { color: #64D2FF; margin-bottom: 0.6rem; }
+.included-tile h3 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; color: #F5F5F7; margin-bottom: 0.5rem; }
+.included-tile p { color: rgba(245, 245, 247, 0.7); line-height: 1.5; margin-bottom: 1.4rem; }
+.inc-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-wrap: wrap; gap: 0.7rem 1.4rem;
+    font-weight: 600; font-size: 0.95rem;
+}
+.inc-list i { width: 1.3em; margin-right: 0.45rem; text-align: center; }
+/* iOS dark-mode system colours: readable on the dark tile */
+.inc-blue { color: #0A84FF; } .inc-indigo { color: #7D7AFF; } .inc-green { color: #30D158; }
+.inc-red { color: #FF453A; } .inc-teal { color: #64D2FF; }
+.included-watermark {
+    position: absolute; right: -1.5rem; top: 38%;
+    font-size: 9rem; line-height: 1;
+    color: #fff; opacity: 0.05;
+    transform: rotate(-20deg);
+    pointer-events: none;
+}
+
+@media (min-width: 768px) {
+    .process-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .process-grid > .bento-process { display: contents; }
+    .included-tile { margin-top: 0; }
+}
+@media (min-width: 992px) {
+    .process-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .included-tile { grid-column: 3; grid-row: 1 / span 3; }
+    .inc-list { flex-direction: column; flex-wrap: nowrap; gap: 0.95rem; margin-top: auto; }
+}
+@media (min-width: 1200px) {
+    .process-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .included-tile { grid-column: 4; }
+}
+
+/* ---- Offers ----
+   tablet: the recommended offer spans the row on top, the two others below */
+@media (min-width: 768px) {
+    .bento-plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bento-plans > .b-featured { grid-column: span 2; order: -1; }
+    .bento-plans > .b-featured ul { columns: 2; column-gap: 2.5rem; }
+    .bento-plans > .b-featured li { break-inside: avoid; }
+}
+@media (min-width: 992px) {
+    .bento-plans { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .bento-plans > .b-featured { grid-column: auto; order: 0; }
+    .bento-plans > .b-featured ul { columns: 1; }
 }
