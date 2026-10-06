@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 512 512">
+  <title>Hannay</title>
+  <rect width="512" height="512" fill="#1F3A5F"/>
+  <path fill="#FFFFFF" d="M160 123h62v88h68v-88h62v232h-62v-90h-68v90h-62z"/>
+  <rect x="160" y="375" width="192" height="14" fill="#F2B544"/>
+</svg>

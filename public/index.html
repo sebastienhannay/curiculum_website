@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // The old Firebase addresses forward to the custom domain (same page, query and anchor)
+        if (/^sebastienhannay\.(web\.app|firebaseapp\.com)$/.test(location.hostname)) {
+            location.replace('https://sebastien.hannay.be' + location.pathname + location.search + location.hash);
+        }
+    </script>
     <title>Sébastien Hannay — Mobile apps for SaaS, from idea to App Store</title>
     <meta name="description" content="End-to-end mobile product development for SaaS companies and startups: UX mockups, native iOS, web, APIs, backend, security, testing and App Store delivery. Android through a trusted partner. AI-accelerated, senior-reviewed. Based in Belgium.">
-    <link rel="canonical" href="https://sebastienhannay.web.app/">
+    <link rel="canonical" href="https://sebastien.hannay.be/">
     <meta name="author" content="Sébastien Hannay">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sebastienhannay.web.app/">
+    <meta property="og:url" content="https://sebastien.hannay.be/">
     <meta property="og:site_name" content="Sébastien Hannay">
     <meta property="og:title" content="Your app, from idea to App Store — Sébastien Hannay">
     <meta property="og:description" content="End-to-end mobile development for SaaS: design, iOS, web, backend, security, testing and delivery. Thought by humans, accelerated by AI, reviewed by a senior engineer.">
-    <meta property="og:image" content="https://sebastienhannay.web.app/resources/og-image.jpg">
+    <meta property="og:image" content="https://sebastien.hannay.be/resources/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
@@ -21,19 +27,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Your app, from idea to App Store — Sébastien Hannay">
     <meta name="twitter:description" content="End-to-end mobile development for SaaS: design, iOS, web, backend, security, testing and delivery.">
-    <meta name="twitter:image" content="https://sebastienhannay.web.app/resources/og-image.jpg">
+    <meta name="twitter:image" content="https://sebastien.hannay.be/resources/og-image.jpg">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "Person",
-          "@id": "https://sebastienhannay.web.app/#person",
+          "@id": "https://sebastien.hannay.be/#person",
           "name": "Sébastien Hannay",
           "jobTitle": "Freelance iOS & mobile product engineer",
-          "url": "https://sebastienhannay.web.app/",
-          "image": "https://sebastienhannay.web.app/resources/profile.jpg",
-          "email": "mailto:seb.hannay@gmail.com",
+          "url": "https://sebastien.hannay.be/",
+          "image": "https://sebastien.hannay.be/resources/profile.jpg",
+          "email": "mailto:sebastien@hannay.be",
           "address": { "@type": "PostalAddress", "addressLocality": "Liège", "addressCountry": "BE" },
           "alumniOf": { "@type": "CollegeOrUniversity", "name": "Université de Liège" },
           "knowsLanguage": ["fr", "en"],
@@ -42,12 +48,12 @@
         },
         {
           "@type": "ProfessionalService",
-          "@id": "https://sebastienhannay.web.app/#service",
+          "@id": "https://sebastien.hannay.be/#service",
           "name": "Sébastien Hannay — Mobile apps for SaaS",
-          "url": "https://sebastienhannay.web.app/",
-          "image": "https://sebastienhannay.web.app/resources/og-image.jpg",
+          "url": "https://sebastien.hannay.be/",
+          "image": "https://sebastien.hannay.be/resources/og-image.jpg",
           "description": "End-to-end mobile product development for SaaS companies and startups: UX/UI design, native iOS, Android through a partner, web services and backend, security, testing and App Store delivery.",
-          "founder": { "@id": "https://sebastienhannay.web.app/#person" },
+          "founder": { "@id": "https://sebastien.hannay.be/#person" },
           "areaServed": ["BE", "FR", "LU", "NL", "Europe"],
           "address": { "@type": "PostalAddress", "addressLocality": "Liège", "addressCountry": "BE" },
           "availableLanguage": ["French", "English"],
@@ -813,7 +819,7 @@
                 </div>
                 <div class="col-lg-5">
                     <span class="brief-label"><span class="en">Or get in touch directly</span><span class="fr">Ou contact direct</span></span>
-                    <a class="direct-link" href="mailto:seb.hannay@gmail.com"><span class="ico"><i class="fa-solid fa-envelope"></i></span>seb.hannay@gmail.com</a>
+                    <a class="direct-link" href="mailto:sebastien@hannay.be"><span class="ico"><i class="fa-solid fa-envelope"></i></span>sebastien@hannay.be</a>
                     <a class="direct-link" href="https://linkedin.com/in/sebastienhannay" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-linkedin-in"></i></span>linkedin.com/in/sebastienhannay</a>
                     <a class="direct-link" href="https://github.com/sebastienhannay" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-github"></i></span>github.com/sebastienhannay</a>
                 </div>
@@ -837,6 +843,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
-<script src="js/site.js?v=67e71c2d75"></script>
+<script src="js/site.js?v=9c9db8badc"></script>
 </body>
 </html>

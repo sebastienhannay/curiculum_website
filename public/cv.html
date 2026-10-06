@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // The old Firebase addresses forward to the custom domain (same page, query and anchor)
+        if (/^sebastienhannay\.(web\.app|firebaseapp\.com)$/.test(location.hostname)) {
+            location.replace('https://sebastien.hannay.be' + location.pathname + location.search + location.hash);
+        }
+    </script>
     <title>Sébastien Hannay — Résumé</title>
     <meta name="description" content="Résumé of Sébastien Hannay, senior iOS engineer and tech lead: 12 years building a health SaaS platform (Andaman7), Swift, SwiftUI, FHIR, mobile and backend leadership.">
-    <link rel="canonical" href="https://sebastienhannay.web.app/cv.html">
+    <link rel="canonical" href="https://sebastien.hannay.be/cv.html">
     <meta property="og:title" content="Sébastien Hannay — Résumé">
-    <meta property="og:url" content="https://sebastienhannay.web.app/cv.html">
-    <meta property="og:image" content="https://sebastienhannay.web.app/resources/og-image.jpg">
+    <meta property="og:url" content="https://sebastien.hannay.be/cv.html">
+    <meta property="og:image" content="https://sebastien.hannay.be/resources/og-image.jpg">
     <link rel="icon" type="image/svg+xml" href="resources/coreon_logo_light.svg?v=dbd93753da">
     <link rel="apple-touch-icon" href="resources/coreon_logo.png?v=11722883cc">
 
@@ -64,7 +70,7 @@
                     </h2>
 
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mt-4">
-                        <a href="mailto:seb.hannay@gmail.com" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-solid fa-envelope me-2"></i>Email</a>
+                        <a href="mailto:sebastien@hannay.be" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-solid fa-envelope me-2"></i>Email</a>
                         <a href="https://linkedin.com/in/sebastienhannay" target="_blank" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-brands fa-linkedin me-2"></i>LinkedIn</a>
                         <a href="https://github.com/sebastienhannay" target="_blank" class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium"><i class="fa-brands fa-github me-2"></i>Github</a>
                         <span class="btn btn-ios-secondary rounded-pill px-4 py-2 fw-medium pointer-events-none"><i class="fa-solid fa-location-dot me-2"></i>Crisnée, BE</span>

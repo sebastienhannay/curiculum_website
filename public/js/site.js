@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             message || (fr ? '(décrivez votre projet ici)' : '(describe your project here)'),
         ].join('\n');
 
-        window.location.href = 'mailto:seb.hannay@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        window.location.href = 'mailto:sebastien@hannay.be?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     });
 });
 

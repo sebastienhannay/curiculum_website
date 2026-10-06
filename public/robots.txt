@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sebastienhannay.web.app/sitemap.xml
+Sitemap: https://sebastien.hannay.be/sitemap.xml
