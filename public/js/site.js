@@ -128,13 +128,15 @@ function initScrollEffects() {
         if (p !== lastHeroP) {
             lastHeroP = p;
             const e = 1 - Math.pow(1 - p, 2); // ease-out
-            left.style.translate = `${-e * spread}px ${e * 50}px`;
-            right.style.translate = `${e * spread}px ${e * 50}px`;
+            // Side phones sink only slightly, so they and their shadows stay
+            // above the stats separator line at the end of the motion
+            left.style.translate = `${-e * spread}px ${e * 22}px`;
+            right.style.translate = `${e * spread}px ${e * 22}px`;
             center.style.translate = `0 ${-e * 40}px`;
             // Rotating/scaling re-renders the phone shadows: desktop only
             if (!touch) {
-                left.style.rotate = `${-e * 7}deg`;
-                right.style.rotate = `${e * 7}deg`;
+                left.style.rotate = `${-e * 5}deg`;
+                right.style.rotate = `${e * 5}deg`;
                 center.style.scale = `${1 + e * 0.05}`;
             }
             orbs.forEach((o, i) => { o.style.translate = `0 ${(p * heroH * (0.15 + i * 0.1)).toFixed(1)}px`; });

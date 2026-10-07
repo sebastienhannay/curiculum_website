@@ -160,7 +160,15 @@ img { max-width: 100%; }
 .link-arrow:hover i { transform: translateX(4px); }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; overflow: hidden; padding: 150px 0 60px; }
+/* The glows live in their own clipped layer (.hero-backdrop), so the phones
+   and their labels are never cut while they move on scroll. The backdrop
+   ends exactly on the stats separator line: the 48px that used to sit
+   between the hero and the stats is now the hero's bottom padding. */
+.hero { position: relative; overflow: hidden; padding: 150px 0 108px; }
+@supports (overflow-x: clip) {
+    .hero { overflow: visible; overflow-x: clip; } /* sideways only: phones may move down freely */
+}
+.hero-backdrop { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
 /* Soft glows drawn with radial gradients: same look as a blurred circle,
    but no filter for Safari to recompute on every frame. */
 .ambient-orb {
